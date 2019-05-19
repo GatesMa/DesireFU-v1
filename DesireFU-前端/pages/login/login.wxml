@@ -1,0 +1,42 @@
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+  <view class="action">
+    <text class="cuIcon-appreciatefill text-black"></text>
+    <text style='display:block;margin-left:230rpx'>DesireFU</text>
+  </view>
+</view>
+
+
+<!-- logo图片 -->
+<view>
+    <image class="logo"
+          style="width: 100px; height: 100px; background-color: #eeeeee;"
+          mode="aspectFit"
+          src="https://www.gatesma.cn/myfile/img/icon.png"
+        ></image>
+</view>
+
+<form bindsubmit="formSubmit">
+	<view class="cu-form-group margin-top margin-left margin-right">
+        <text class="cuIcon-people lg text-gray"></text>
+		<view class="title">用户名</view>
+		<input placeholder="输入用户名" type='text' name="username"></input>
+	</view>
+	<view class="cu-form-group  margin-left margin-right">
+        <text class="cuIcon-write lg text-gray"></text>
+		<view class="title">密码</view>
+		<input placeholder="密码" type='password' name="pass"></input>
+	</view>
+       
+    <view class="grid col-2 margin-bottom text-center"role=""aria-label="">
+        <view class="padding"role=""aria-label="">
+            <button class="cu-btn bg-cyan lg" id='login' formType="submit">登陆</button>
+        </view>
+        <view class="padding"role=""aria-label="">
+            <button class="cu-btn bg-grey lg" id='register' bindtap='navToRegister'>注册</button>
+        </view>
+    </view>
+
+    <view class='section_text text-grey text-shadow text-grey'>
+        @DesireFU
+    </view>
+</form>

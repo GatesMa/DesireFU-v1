@@ -1,0 +1,36 @@
+/* pages/login/login.wxss */
+
+.logo {
+    margin: 0 auto;
+    display: block;
+    margin-top: 50px;
+    border-radius: 50%;
+}
+
+#login {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    width: 120px;
+    margin-top:10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#register {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    width: 120px;
+    margin-top:10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.section_text {
+  position: fixed;
+  text-align: center;
+  bottom: 30rpx;
+  left: 0;
+  right: 0;
+}

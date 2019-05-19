@@ -1,0 +1,104 @@
+<!--pages/detail/detail.wxml-->
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+    <view class="action">
+        <text class="cuIcon-back text-black"></text>
+        <text bindtap='returnToInfo'>返回</text>
+        <text style='display:block;margin-left:20rpx' >DesireFU</text>
+    </view>
+</view>
+<view class="cu-bar justify-center bg-white">
+    <view class="action sub-title">
+        <text class="text-xl text-bold text-green">项目详情</text>
+        <text class="bg-green" style="width:2rem"></text>
+        <!-- last-child选择器-->
+    </view>
+</view>
+<view class="post-container">
+    <view class="post-author-date">
+        <image class="cu-avatar lg round margin-left" src="{{info.author.avatar}}"></image>
+    </view>
+    <!-- 时间 -->
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-green"></text>
+            <text>发布时间</text>
+            <text class="post-date">{{info.created_at}}</text>
+        </view>
+    </view>
+    <!-- 项目类型 -->
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-green"></text>
+            <text>项目类型</text>
+            <text class="post-date">{{info.type}}</text>
+        </view>
+    </view>
+    <!-- 标题 -->
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-black"></text>
+            <text>项目标题</text>
+
+        </view>
+    </view>
+    <text class="text-black text-bold margin-left">{{info.title}}</text>
+    <!-- 项目简介 -->
+
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-black"></text>
+            <text>项目简介</text>
+
+        </view>
+    </view>
+    <text class="margin-left text-grey">{{info.content}}</text>
+    <!-- 招募要求 -->
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-black"></text>
+            <text>项目简介</text>
+
+        </view>
+    </view>
+
+    <text class="margin-left text-grey">{{info.requirement}}</text>
+    <!-- 项目目前人数 -->
+
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-green"></text>
+            <text>项目目前人数</text>
+            <text class="post-date">{{info.membernum}}</text>
+        </view>
+    </view>
+    <!-- 负责人联系方式 -->
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-green"></text>
+            <text>负责人联系方式</text>
+        </view>
+    </view>
+    <view class="cu-bar bg-white">
+        <view class="action">
+            电话
+        </view>
+        <view class="content text-black">
+            {{info.author.phone}}
+        </view>
+        <view class="action">
+            <text class="cuIcon-phone text-green"></text>
+        </view>
+    </view>
+     <view class="cu-bar bg-white">
+        <view class="action">
+            邮箱
+        </view>
+        <view class="content text-black">
+            {{info.author.email}}
+        </view>
+        <view class="action">
+            <text class="cuIcon-addressbook text-red"></text>
+            
+        </view>
+    </view>
+</view>

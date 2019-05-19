@@ -1,0 +1,47 @@
+<!--pages/createInfo/createInfo.wxml-->
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+    <view class="action">
+        <text class="cuIcon-back text-black"></text>
+        <text bindtap='returnToUsercenter'>返回</text>
+        <text style='display:block;margin-left:240rpx'>DesireFU</text>
+    </view>
+</view>
+
+<view class="cu-bar justify-center bg-white" style='margin-top: 20rpx;'>
+    <view class="action border-title">
+        <text class="text-xl text-bold">创建项目招募</text>
+        <text class="bg-grey" style="width:2rem"></text>
+        <!-- 底部样式 last-child选择器-->
+    </view>
+</view>
+
+<form bindsubmit="formSubmit">
+    <view class="cu-form-group margin-top margin-left margin-right">
+        <view class="title">标题</view>
+        <input placeholder="标题" name="title" type='text'></input>
+    </view>
+
+    <view class="cu-form-group margin-top margin-left margin-right">
+        <view class="title">项目类型</view>
+        <picker bindchange="pickerChange" value="{{index}}" range="{{picker}}" name="type">
+            <view class="picker">
+                {{index?picker[index]:'互联网➕'}}
+            </view>
+        </picker>
+    </view>
+
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">项目内容</view>
+        <textarea placeholder="项目内容" name="content"></textarea>
+    </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">项目目前人数</view>
+        <input placeholder="项目目前人数" name="membernum" type='number'></input>
+    </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">招募要求</view>
+        <textarea placeholder="招募要求" name="requirement"></textarea>
+        <text class="cuIcon-info text-orange"></text>
+    </view>
+    <button class="cu-btn bg-cyan lg" id='register' formType="submit">发布</button>
+</form>

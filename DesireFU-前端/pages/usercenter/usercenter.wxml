@@ -1,0 +1,46 @@
+<!--pages/usercenter/usercenter.wxml-->
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+    <view class="action">
+        <text class="cuIcon-appreciatefill text-black"></text>
+        <text bindtap='returnToLogin'></text>
+        <text style='display:block;margin-left:240rpx'>DesireFU</text>
+    </view>
+</view>
+
+
+<view class="personalMe">
+    <image src="{{userInfo.avatarUrl}}" style="width:68px;height:68px;border:1px solid #ddd;float:left;margin:20rpx 20rpx;border-radius: 50%;"></image>
+    <view class="personalInfo">
+        <text>姓名: {{user.username}}</text>
+        <text>电话: {{user.phone}}</text>
+    </view>
+</view>
+
+
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+        <text class="cuIcon-title text-orange "></text> 菜单列表
+    </view>
+</view>
+
+<view class="cu-list menu text-left solid-top">
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content" bindtap='myInfos'>
+            <text class="cuIcon-circlefill text-grey"></text>
+            <text class="text-grey" >我的招募</text>
+        </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content">
+            <text class="cuIcon-tagfill text-red"></text>
+            <text class="text-grey" bindtap='createInfo'>新建招募</text>
+        </view>
+    </view>
+    <!-- <view class="cu-item {{menuArrow?'arrow':''}}">
+        <button class="cu-btn content" open-type="contact">
+            <text class="cuIcon-btn text-olive"></text>
+            <text class="text-grey">Open-type 按钮</text>
+        </button>
+    </view> -->
+</view>

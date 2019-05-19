@@ -1,0 +1,31 @@
+<DOCTYPE html>
+<html lang = "zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.js"></script>
+            
+</head>
+<body>
+    <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+    
+            <form class="ui form segment" method="POST" action="https://gatesma.cn:3000/signin">
+                <div class="field required">
+                    <label>用户名</label>
+                    <input type="text" name="username" placeholder="用户名">
+                </div>
+                <div class="field required">
+                    <label>密码</label>
+                    <input type="password" placeholder="密码" name="pass">
+                </div>
+                <input type="submit" class="ui button fluid" value="登陆">
+            </form>
+    
+        </div>
+    </div>
+</body>
+</html>

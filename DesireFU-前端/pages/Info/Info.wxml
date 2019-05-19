@@ -1,0 +1,48 @@
+<wxs src="../../wxs/subutil.wxs" module="tools" />
+<!--pages/Info/Info.wxml-->
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+    <view class="action">
+        <text class="cuIcon-appreciatefill text-black"></text>
+        <text bindtap='returnToLogin'></text>
+        <text style='display:block;margin-left:230rpx'>DesireFU</text>
+    </view>
+</view>
+
+<block wx:if="{{!author}}">
+    <view class="cu-bar justify-center bg-white">
+        <view class="action sub-title">
+            <text class="text-xl text-bold text-blue">招募大厅</text>
+            <text class="text-ABC text-blue">recruit</text>
+            <!-- last-child选择器-->
+        </view>
+    </view>
+</block>
+
+<block wx:if="{{author}}">
+    <view class="cu-bar bg-white margin-top">
+        <view class="action" bindtap='returnToInfo'>
+            <text class="cuIcon-back text-green"></text>
+            <text>返回大厅</text>
+        </view>
+    </view>
+</block>
+
+<block wx:for="{{infos}}" wx:key="unique">
+    <view class="post-container margin-left margin-right">
+        <view class="post-author-date">
+            <image class="post-author" src="{{item.author.avatar}}"></image>
+
+            <text class="post-date text-grey">{{item.created_at}}</text>
+
+            <view class="cu-tag bg-blue margin-right" style='float:right;margin-top:10rpx' bindtap='detail' data-id='{{index}}'>详情</view>
+        </view>
+        <text class="post-title text-cyan">{{item.title}}</text>
+        <text class='text-orange padding-left padding-right'>项目简介：
+            <text class="post-content">{{tools.sub(item.content)}}</text>
+
+        </text>
+        <text class='text-mauve padding-left padding-right'>具体要求：
+            <text class="post-content">{{tools.sub(item.requirement)}}</text>
+        </text>
+    </view>
+</block>

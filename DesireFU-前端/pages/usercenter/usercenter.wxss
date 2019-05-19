@@ -1,0 +1,21 @@
+/* pages/personal/personal.wxss */
+/** 修改button默认的点击态样式类**/
+page{
+    /*background-color:#fff;*/
+    font-size:30rpx;
+}
+
+.personalMe{
+    height:210rpx;
+    margin:30rpx 0rpx 30rpx 0rpx;
+    background-color: #fff;
+}
+.personalInfo{
+    float:left;
+    margin: 20rpx 0rpx 0rpx 20rpx;
+}
+.personalInfo wx-text{
+    display: block;
+    line-height:70rpx;
+    height:70rpx;
+}

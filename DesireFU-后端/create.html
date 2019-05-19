@@ -1,0 +1,48 @@
+<DOCTYPE html>
+<html lang = "zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.js"></script>
+            
+</head>
+<body>
+
+<div class="ui grid">
+    <div class="four wide column">
+        
+    </div>
+    
+    <div class="eight wide column">
+        <form class="ui form segment" method="post" action="http://localhost:3000/info/5cdea0b803e6d315e38ce514/edit">
+        <div class="field required">
+            <label>标题</label>
+            <input type="text" name="title">
+        </div>
+        <div class="field required">
+            <label>类型</label>
+            <input type="text" name="type">
+        </div>
+        <div class="field required">
+            <label>招募内容</label>
+            <input type="text" name="content">
+        </div>
+        <div class="field required">
+            <label>项目人数</label>
+            <input type="number" name="membernum">
+        </div>
+        <div class="field required">
+            <label>招募要求</label>
+            <input type="text" name="requirement">
+        </div>
+        
+        
+        <input type="submit" class="ui button" value="发布">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
