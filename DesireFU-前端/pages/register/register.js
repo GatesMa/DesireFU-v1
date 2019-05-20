@@ -7,13 +7,43 @@ Page({
      */
     data: {
         picker: ['计算机学院', '艺术学院', '华西医学院'],
+        motto: 'Hello World',
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        user: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+        if (app.globalData.userInfo) {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+                hasUserInfo: true
+            })
+        } else if (this.data.canIUse) {
+            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+            // 所以此处加入 callback 以防止这种情况
+            app.userInfoReadyCallback = res => {
+                this.setData({
+                    userInfo: res.userInfo,
+                    hasUserInfo: true
+                })
+            }
+        } else {
+            // 在没有 open-type=getUserInfo 版本的兼容处理
+            wx.getUserInfo({
+                success: res => {
+                    app.globalData.userInfo = res.userInfo
+                    this.setData({
+                        userInfo: res.userInfo,
+                        hasUserInfo: true
+                    })
+                }
+            })
+        }
     },
 
     /**
@@ -79,6 +109,7 @@ Page({
         })
     },
     formSubmit: function (e) {
+        var that = this
         e.detail.value.acade = this.data.picker[Number(e.detail.value.acade)]
         console.log('form发生了submit事件，携带数据为：', e.detail.value);
 
@@ -149,6 +180,12 @@ Page({
             })
         } else {
             //数据正确，发起网络请求
+            if (app.globalData.userInfo) {
+                // console.log('userInfo:' + userInfo)
+                app.globalData.user.avatar = app.globalData.userInfo.avatarUrl
+            } else {
+                console.log('userInfo为空')
+            }
             console.log('发起注册网络请求')
             wx.request({
                 url: 'https://gatesma.cn:3000/signup', // 仅为示例，并非真实的接口地址
@@ -159,7 +196,7 @@ Page({
                     realname: e.detail.value.realname,
                     stuid: e.detail.value.stuid,
                     acade: e.detail.value.acade,
-                    avatar: app.globalData.userInfo.avatarUrl,
+                    avatar: app.globalData.user.avatar,
                     phone: e.detail.value.phone,
                     email: e.detail.value.email
                 },
@@ -177,6 +214,9 @@ Page({
                         })
                         console.log(res.data)
                         app.globalData.user = res.data;
+                        that.setData({
+                            user: res.data
+                        })
                         console.log(app.globalData.user._id)
                         wx.reLaunch({
                             url: '../Info/Info'
@@ -256,5 +296,12 @@ Page({
         // })
 
     },
-
+    getUserInfo: function (e) {
+        console.log(e)
+        app.globalData.userInfo = e.detail.userInfo
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        })
+    }
 })
