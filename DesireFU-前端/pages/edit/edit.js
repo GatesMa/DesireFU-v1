@@ -86,6 +86,12 @@ Page({
             url: '../usercenter/usercenter',
         })
     },
+    pickerChange(e) {
+        console.log(e);
+        this.setData({
+            index: e.detail.value
+        })
+    },
     formSubmit: function(e) {
         var that = this
         e.detail.value.acade = this.data.picker[Number(e.detail.value.acade)]
