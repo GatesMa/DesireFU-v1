@@ -114,6 +114,12 @@ Page({
             index: e.detail.value
         })
     },
+    bindPickerChange(e) {
+        console.log(e);
+        this.setData({
+            index2: e.detail.value
+        })
+    },
     formSubmit: function (e) {
         var that = this
         e.detail.value.acade = this.data.picker[Number(e.detail.value.acade)]

@@ -67,9 +67,9 @@
     </view>
     <view class="cu-form-group margin-top margin-left margin-right">
         <view class="title">你的用户标签</view>
-        <picker bindchange="pickerChange" value="{{index}}" range="{{picker2}}" name="requireType">
+        <picker bindchange="bindPickerChange" value="{{index2}}" range="{{picker2}}" name="requireType">
             <view class="picker">
-                {{index?picker2[index]:'美工'}}
+                {{index2?picker2[index2]:'美工'}}
             </view>
         </picker>
     </view>
