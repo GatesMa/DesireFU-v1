@@ -15,7 +15,9 @@ exports.User = mongolass.model('User', {
     acade: {type: 'string', required: true},//学院
     avatar: {type: 'string', default: ''},//头像
     phone: {type: 'string', required:true},//电话
-    email: {type: 'string', required: true}//邮箱
+    email: {type: 'string', required: true},//邮箱
+    requireType: {type: 'number', required: true}, //用户类型
+    isRequired: {type: 'string', required: true}
 })
 
 exports.User.index({ username: 1 }, { unique: true }).exec()// 根据用户名找到用户，用户名全局唯一

@@ -7,7 +7,8 @@ Page({
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        user: ''
     },
     //事件处理函数
     bindViewTap: function () {
@@ -34,6 +35,18 @@ Page({
     createInfo: function() {
         wx.reLaunch({
             url: '../createInfo/createInfo',
+        })
+    },
+    edit: function() {
+        wx.reLaunch({
+            url: '../edit/edit',
+        })
+    },
+    signout: function() {
+        app.globalData.author = ''
+        app.globalData.user = ''
+        wx.reLaunch({
+            url: '../login/login',
         })
     }
 })

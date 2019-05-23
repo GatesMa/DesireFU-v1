@@ -10,9 +10,12 @@ router.get('/', function (req, res, next) {
 
 // POST /signin 用户登录
 router.post('/', function (req, res, next) {
+    console.log('--------------------')
     console.log(req.body)
+    console.log('--------------------')
+
     const username = req.body.username //账户名
-    const pass = req.body.pass //密码
+    pass = req.body.pass //密码
 
     //检验参数
     // try {
@@ -32,10 +35,13 @@ router.post('/', function (req, res, next) {
         .then(function(user) {
             if(!user) {
                 type = 1 //用户名不存在
+                res.send({type: 1});
+                return
             }
             //检查密码是否匹配
             if(sha1(pass) !== user.pass) {
-                type = 2 //用户名或密码错误
+                user.type = 2 //用户名或密码错误
+                res.send(JSON.stringify(user));
             }
             
             user.type = type

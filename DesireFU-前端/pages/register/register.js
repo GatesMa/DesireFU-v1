@@ -7,11 +7,17 @@ Page({
      */
     data: {
         picker: ['计算机学院', '艺术学院', '华西医学院'],
+        picker2: ['美工', '文案', '编程', '答辩', '调研' ],
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        user: {}
+        user: {},
+        items: [
+            { name: 'yes', value: '是' , checked: 'true'},
+            { name: 'no', value: '否' },
+        ],
+        isRequired: 'yes'
     },
 
     /**
@@ -113,6 +119,8 @@ Page({
         e.detail.value.acade = this.data.picker[Number(e.detail.value.acade)]
         console.log('form发生了submit事件，携带数据为：', e.detail.value);
 
+        var isRequired = this.data.isRequired
+
         if (e.detail.value.username.length >= 10 || e.detail.value.username.length <= 3) {
             //名字限制在3-10字符
             wx.showModal({
@@ -179,6 +187,7 @@ Page({
                 }
             })
         } else {
+            e.detail.value.requireType = Number(e.detail.value.requireType)
             //数据正确，发起网络请求
             if (app.globalData.userInfo) {
                 // console.log('userInfo:' + userInfo)
@@ -187,6 +196,7 @@ Page({
                 console.log('userInfo为空')
             }
             console.log('发起注册网络请求')
+            
             wx.request({
                 url: 'https://gatesma.cn:3000/signup', // 仅为示例，并非真实的接口地址
                 method: 'POST',
@@ -198,7 +208,9 @@ Page({
                     acade: e.detail.value.acade,
                     avatar: app.globalData.user.avatar,
                     phone: e.detail.value.phone,
-                    email: e.detail.value.email
+                    email: e.detail.value.email,
+                    requireType: e.detail.value.requireType + 1,
+                    isRequired: isRequired
                 },
                 header: {
                     'content-type': 'application/json' // 默认值x-www-form-urlencoded
@@ -234,6 +246,8 @@ Page({
                                 }
                             }
                         })
+                    } else {
+                        console.log('nothing')
                     }
                 }
             })
@@ -302,6 +316,13 @@ Page({
         this.setData({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
+        })
+    },
+    radioChange(e) {
+        var that = this
+        console.log('radio发生change事件，携带value值为：', e.detail.value)
+        that.setData({
+            isRequired: e.detail.value
         })
     }
 })

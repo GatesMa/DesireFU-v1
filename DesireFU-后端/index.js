@@ -7,25 +7,23 @@ const routes = require('./routes')
 const pkg = require('./package')
 
 const app = express()
-
-
-
-// Configuare https
+let http = require("http");
+let https = require("https");
+let fs = require("fs");
 const httpsOption = {
-    key : fs.readFileSync("./https/xxxxxxxxxxxx.key"),
-    cert: fs.readFileSync("./https/xxxxxxxxxxxx.pem")
+    key : fs.readFileSync("./http/1891211_www.gatesma.cn.key"),
+    cert: fs.readFileSync("./http/1891211_www.gatesma.cn.pem")
 }
-// Create service
 
-http.createServer(app).listen(80);
-https.createServer(httpsOption, app).listen(443);
 
 
 // 路由
 routes(app)
 
 // 监听端口，启动程序
-app.listen(config.port, function () {
+// app.listen(config.port, function () {
     
-    console.log(`${pkg.name} listening on port ${config.port}`)
-})
+//     console.log(`${pkg.name} listening on port ${config.port}`)
+// })
+
+https.createServer(httpsOption, app).listen(3000);

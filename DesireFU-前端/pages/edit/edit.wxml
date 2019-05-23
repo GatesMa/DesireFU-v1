@@ -1,0 +1,85 @@
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+    <view class="action">
+        <text class="cuIcon-back text-green"></text>
+        <text bindtap='returnToCenter'>返回</text>
+        <text style='display:block;margin-left:230rpx'>注册</text>
+    </view>
+</view>
+
+
+<view class="cu-bar justify-center bg-white" style='margin-top: 20rpx;'>
+    <view class="action border-title">
+        <text class="text-xl text-bold">修改个人信息</text>
+        <text class="bg-yellow" style="width:2rem"></text>
+        <!-- 底部样式 last-child选择器-->
+    </view>
+</view>
+
+<form bindsubmit="formSubmit">
+    <view class="cu-form-group margin-top margin-left margin-right">
+        <view class="title">用户名</view>
+        <input name="username" type='text' disabled='false' value='{{user.username}}'
+></input>
+        <text >不可修改</text>
+    </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">密码</view>
+        <input placeholder="密码" name="pass" type='password'></input>
+    </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">重复密码</view>
+        <input placeholder="重复密码" name="repass" type='password'></input>
+    </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">真实姓名</view>
+        <input placeholder="真实姓名" name="realname" type='text' value='{{user.realname}}'></input>
+    </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">学号</view>
+        <input placeholder="学号" name="stuid" type='text' value='{{user.stuid}}'></input>
+        <text class="cuIcon-info text-orange"></text>
+    </view>
+    <view class="cu-form-group margin-top margin-left margin-right">
+        <view class="title">学院</view>
+        <picker bindchange="pickerChange" value="{{index}}" range="{{picker}}" name="acade">
+            <view class="picker">
+                {{index?picker[index]:'计算机学院'}}
+            </view>
+        </picker>
+    </view>
+
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">手机号码</view>
+        <input placeholder="手机号码" name="phone" type='text' value='{{user.phone}}'></input>
+        <view class="cu-capsule radius">
+            <view class="cu-tag bg-blue">
+                +86
+            </view>
+            <view class="cu-tag line-blue">
+                中国大陆
+            </view>
+        </view>
+    </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">Email</view>
+        <input placeholder="email" name="email" type='email' value='{{user.email}}'></input>
+        <text class="cuIcon-info text-orange"></text>
+    </view>
+    <view class="cu-form-group margin-top margin-left margin-right">
+        <view class="title">你的用户标签</view>
+        <picker bindchange="pickerChange" value="{{index}}" range="{{picker2}}" name="requireType">
+            <view class="picker">
+                {{index?picker2[index]:'美工'}}
+            </view>
+        </picker>
+    </view>
+    <view class="cu-form-group margin-top margin-left margin-right">
+        <radio-group class="radio-group" bindchange="radioChange" name="isRequired">
+            <view class="title">是否愿意被招募</view>
+            <label class="radio" wx:for="{{items}}">
+                <radio value="{{item.name}}" checked="{{item.checked}}" /> {{item.value}}
+            </label>
+        </radio-group>
+    </view>
+    <button class="cu-btn bg-blue lg" id='register' formType="submit">修改</button>
+</form>

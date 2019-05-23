@@ -1,0 +1,68 @@
+<!--pages/search/search.wxml-->
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+    <view class="action">
+        <text class="cuIcon-appreciatefill text-black"></text>
+
+        <text style='display:block;margin-left:20rpx'>DesireFU</text>
+    </view>
+</view>
+<view class="cu-bar justify-center bg-white">
+    <view class="action sub-title">
+        <text class="text-xl text-bold text-brown">搜索🔍</text>
+        <text class="bg-green" style="width:2rem"></text>
+        <!-- last-child选择器-->
+    </view>
+</view>
+<view class="cu-bar bg-cyan search">
+    <view class="search-form radius">
+        <text class="cuIcon-search"></text>
+        <input type="text" placeholder="搜索项目需求队友类型" confirm-type="search" bindinput="requireInput"></input>
+    </view>
+    <view class="action">
+        <text class="cuIcon-check"></text>
+        <text bindtap='search'>确定</text>
+    </view>
+</view>
+
+<block wx:if="{{!isSearched}}">
+    <view class='margin-left margin-top margin-right'>
+        <view class="cu-tag line-red margin-right">美工</view>
+        <view class="cu-tag line-olive margin-right">文案</view>
+        <view class="cu-tag line-orange margin-right">编程</view>
+        <view class="cu-tag line-blue margin-right">答辩</view>
+        <view class="cu-tag line-brown margin-right">调研</view>
+        <view class="cu-tag line-grey margin-right">...</view>
+    </view>
+</block>
+<block wx:else>
+    <block wx:if="{{length!=0}}">
+        <view class="cu-list menu-avatar margin-top">
+            <!-- 列表渲染 -->
+            <block wx:for="{{userList}}" wx:key="unique">
+                <view class="cu-item">
+                    <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+                    <view class="content">
+                        <view class="text-grey">{{item.realname}}</view>
+                        <view class="text-gray text-sm flex">
+                            <text class="text-cut">
+                                Phone:{{item.phone}},学院:{{item.acade}}
+                            </text>
+                        </view>
+                    </view>
+                    <view class="action">
+                        <view class="text-grey text-xs">{{item.username}}</view>
+                    </view>
+                </view>
+            </block>
+
+        </view>
+    </block>
+    <view class="padding text-center" wx:else>
+        <view class="padding-lr bg-white">
+            <view class="solid-bottom padding">
+                <text class="text-red">抱歉</text>
+            </view>
+            <view class="padding">没有这个标签的用户，换个关键词试试</view>
+        </view>
+    </view>
+</block>

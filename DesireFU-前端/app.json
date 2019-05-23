@@ -1,13 +1,15 @@
 {
     "pages": [
+        "pages/login/login",
         "pages/Info/Info",
         "pages/register/register",
-        "pages/login/login",
+        "pages/search/search",
         "pages/index/index",
         "pages/logs/logs",
         "pages/usercenter/usercenter",
         "pages/detail/detail",
-        "pages/createInfo/createInfo"
+        "pages/createInfo/createInfo",
+        "pages/edit/edit"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -24,6 +26,12 @@
                 "text": "招募大厅",
                 "iconPath": "images/info.png",
                 "selectedIconPath": "images/info-selec.png"
+            },
+            {
+                "pagePath": "pages/search/search",
+                "text": "搜索",
+                "iconPath": "images/search.png",
+                "selectedIconPath": "images/search-selec.png"
             },
             {
                 "pagePath": "pages/usercenter/usercenter",

@@ -17,5 +17,21 @@ module.exports = {
         return User
             .findOne({_id: id})
             .exec()
-    }
+    },
+    //通过用户类型获取用户
+    getUsersByRequireType: function getUsersByRequireType(requireType) {
+        const query = {isRequired: 'yes'}
+        console.log('getUser:' + requireType)
+        if(requireType) {
+            query.requireType = Number(requireType)
+        }
+        return User
+            .find(query)
+            .exec()
+    },
+    //修改信息
+    //通过文章id更新一篇文章
+    updatUserById: function updatUserById(postId, data) {
+        return User.updateOne({_id: postId}, {$set: data}).exec()
+    },
 }

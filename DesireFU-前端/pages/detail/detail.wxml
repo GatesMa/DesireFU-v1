@@ -16,6 +16,8 @@
 <view class="post-container">
     <view class="post-author-date">
         <image class="cu-avatar lg round margin-left" src="{{info.author.avatar}}"></image>
+        <text class='margin-left'>{{info.author.username}}</text>
+        <button wx:if="{{info.author._id == user._id}}" class="cu-btn margin-right margin-top bg-blue" style='float:right' bindtap='removeInfo' data-id='{{info._id}}'>删除本条招募</button>
     </view>
     <!-- 时间 -->
     <view class="cu-bar bg-white">
@@ -48,10 +50,9 @@
         <view class="action">
             <text class="cuIcon-title text-black"></text>
             <text>项目简介</text>
-
         </view>
     </view>
-    <text class="margin-left text-grey">{{info.content}}</text>
+    <text class="margin-left text-grey post-content">{{info.content}}</text>
     <!-- 招募要求 -->
     <view class="cu-bar bg-white">
         <view class="action">

@@ -20,39 +20,16 @@ router.post('/', function (req, res) {
     const repass = req.body.repass // 重复密码
     const realname = req.body.realname //真名
     const stuid = req.body.stuid //学号
-    const acade = req.body.academy //学院
+    const acade = req.body.acade //学院
     const phone = req.body.phone //电话
     const email = req.body.email //邮箱
 
-    const avatar = '' //头像
-    //校验参数
-    try {
-        if(!(username.length >= 1 && username.length <= 10)) {
-            throw new Error('名字限制在1-10个字符')
-        }
-        if(pass.length < 6) {
-            throw new Error('密码至少 6 个字符')
-        }
-        if(pass !== repass) {
-            throw new Error('两次输入的密码不一致')
-        }
-        if(!(realname.length >= 1 && realname.length <= 30)) {
-            throw new Error('真名限制在1-30个字符')
-        }
-        if(stuid.length != 13) {
-            throw new Error('输入正确的学号')
-        }
-        if(!(acade.length >= 1 && acade.length <= 30)) {
-            throw new Error('学院在1-30个字符')
-        }
-        if( phone.length != 11 ) {
-            throw new Error('电话不对')
-        }
-        
-    } catch (e) {
-        // 注册失败，异步删除上传的头像
-        //do something here
-    }
+    const avatar = req.body.avatar //头像
+
+    const requireType = req.body.requireType // 用户类型
+    const isRequired = req.body.isRequired //是否愿意被招募
+
+    
 
     //明文密码加密
     pass = sha1(pass)
@@ -66,7 +43,9 @@ router.post('/', function (req, res) {
         acade: acade,
         avatar: avatar,
         phone: phone,
-        email: email
+        email: email,
+        requireType: requireType,
+        isRequired: isRequired
     }
 
     resUser = {}
@@ -79,7 +58,9 @@ router.post('/', function (req, res) {
             console.log('-----------------2---------------')
             //-----插入数据库成功
             //此user是插入 mongodb 后的值， 包含_id
+
             resUser = result.ops[0]
+            resUser.type = 0
             res.end(JSON.stringify(resUser));
             
             console.log('-----------------3---------------')
@@ -89,6 +70,8 @@ router.post('/', function (req, res) {
             console.log('-----------------4---------------')
             console.log(e)
             //注册失败
+            resUser.type = 1
+            res.end(JSON.stringify(resUser));
         })
     console.log('-----------------6---------------')
 

@@ -24,10 +24,17 @@
 </view>
 
 <view class="cu-list menu text-left solid-top">
+
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+        <view class="content" bindtap='edit'>
+            <text class="cuIcon-write text-black"></text>
+            <text class="text-grey" bindtap='createInfo'>修改信息</text>
+        </view>
+    </view>
     <view class="cu-item {{menuArrow?'arrow':''}}">
         <view class="content" bindtap='myInfos'>
             <text class="cuIcon-circlefill text-grey"></text>
-            <text class="text-grey" >我的招募</text>
+            <text class="text-grey">我的招募</text>
         </view>
     </view>
     <view class="cu-item {{menuArrow?'arrow':''}}">
@@ -36,10 +43,16 @@
             <text class="text-grey" bindtap='createInfo'>新建招募</text>
         </view>
     </view>
-    <!-- <view class="cu-item {{menuArrow?'arrow':''}}">
-        <button class="cu-btn content" open-type="contact">
-            <text class="cuIcon-btn text-olive"></text>
-            <text class="text-grey">Open-type 按钮</text>
-        </button>
-    </view> -->
+
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="cuIcon-warn text-green"></text>
+        <text class="text-grey" bindtap='signout'>登出系统</text>
+      </view>
+      <view class="action">
+        <text class="text-grey text-sm" bindtap='signout'>退出当前系统并跳转至登陆页</text>
+      </view>
+    </view>
+
+
 </view>

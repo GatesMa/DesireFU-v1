@@ -2,11 +2,12 @@ const express = require('express')
 const router = express.Router()
 var url = require("url");
 const InfoModel = require('../models/t_info')
-
+const UserModel = require('../models/t_user')
 
 // GET /info 
 //   eg: GET /info?author=xxx
 router.get('/', function (req, res, next) {
+    console.log('/info')
     var p = url.parse(req.url);
     var param = req.query;
     author = '' //请求的用户id
@@ -34,7 +35,7 @@ router.post('/create', function (req, res, next) {
     const content = req.body.content //招募内容
     const membernum = req.body.membernum //团队人数
     const requirement = req.body.requirement //招募要求
-    const author = '5cde930da9188f1431f3da7c' //发布招募的人 类型： User
+    const author = req.body.author //发布招募的人 类型： User
 
     let info = {
         author: author,
@@ -63,7 +64,7 @@ router.get('/create', function (req, res, next) {
 // GET /info/:infoId 
 router.get('/:infoId', function (req, res, next) {
     const infoId = req.params.infoId
-
+    console.log('infoId detail')
     Promise.all([
         InfoModel.getInfoById(infoId), // 获取招募信息
     ])
@@ -120,8 +121,6 @@ router.post('/:infoId/edit', function (req, res, next) {
 // GET /info/:infoId/remove 
 router.get('/:infoId/remove', function (req, res, next) {
     const infoId = req.params.infoId
-    
-
     InfoModel.delInfoById(infoId)
         .then(function (info) {
             if (!info) {
@@ -135,5 +134,18 @@ router.get('/:infoId/remove', function (req, res, next) {
                 .catch(next)
             })
 })
+
+router.post('/user', function (req, res, next) {
+    console.log('/user')
+    const requireType = Number(req.body.requireType) //招募要求
+
+    UserModel.getUsersByRequireType(requireType)
+        .then(function (users) {
+            res.send(users)
+        })
+        .catch(next)
+})
+
+
 
 module.exports = router

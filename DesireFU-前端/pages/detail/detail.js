@@ -7,7 +7,8 @@ Page({
      */
     data: {
         id: '',
-        info: null
+        info: null,
+        user: null
     },
 
     /**
@@ -20,11 +21,14 @@ Page({
             id: options.id
         })
         var id = options.id
-        that.setData({
+        this.setData({
             info: app.globalData.infos[id]
         })
         console.log("id :" + this.id)
         console.log("info :" + that.info)
+        this.setData({
+            user: app.globalData.user
+        })
     },
 
     /**
@@ -78,6 +82,37 @@ Page({
     returnToInfo: function() {
         wx.reLaunch({
             url: '../Info/Info'
+        })
+    },
+    removeInfo: function(e) {
+        var infoId = e.currentTarget.dataset.id;
+        console.log('remove:' + infoId);
+        
+        wx.request({
+            url: 'https://gatesma.cn:3000/info/' + infoId + '/remove', // 仅为示例，并非真实的接口地址
+            method: 'GET',
+            data: {
+
+            },
+            header: {
+                'content-type': 'application/json' // 默认值x-www-form-urlencoded
+            },
+            success(res) {
+                wx.showModal({
+                    title: '提示',
+                    content: '删除成功',
+                    success(res) {
+                        if (res.confirm) {
+                            console.log('用户点击确定')
+                        } else if (res.cancel) {
+                            console.log('用户点击取消')
+                        }
+                    }
+                })
+                wx.reLaunch({
+                    url: '../Info/Info',
+                })
+            }
         })
     }
 })
