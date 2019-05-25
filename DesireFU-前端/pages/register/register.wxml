@@ -91,5 +91,9 @@
             </label>
         </radio-group>
     </view>
+    <view class="cu-form-group margin-left margin-right">
+        <view class="title">个人介绍</view>
+        <textarea placeholder="个人介绍（至少20字符）" name="profile"></textarea>
+    </view>
     <button class="cu-btn bg-cyan lg" id='register' formType="submit">注册</button>
 </form>

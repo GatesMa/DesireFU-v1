@@ -1,0 +1,21 @@
+<!--pages/test/test.wxml-->
+
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+  <view class="action">
+  <view class="al">
+    <text class="cuIcon-back text-green"></text>
+    <text class="fh" bindtap='pageBack'>返回</text>
+    <image class="sign2" src="../../images/ziti.png"></image>
+  </view>
+  </view>
+</view>
+<view class="bg-img bg-mask padding-tb-xl" style="background-image: url('../../images/background2.jpg');height: 1200rpx;">
+  <view class='text-content border:1 rpx' >
+    <view class='text-center margin-bottom text-xxl  text-red'>关于DesireFU</view>
+    <image src='https://www.gatesma.cn/myfile/img/icon.png' class="ime" mode="aspectFill"></image>
+    <view class='margin-top-sm text-lg' >
+    <text space='nbsp' class="text-blue margin-left: 50rpx margin-right: 50rpx ">      鉴于高校参加大型比赛比如大创、互联网+等需要在各大群发布招募需求时，消息容易被埋没，信息不具备时效性，而且往往具有不完整等弊端，于是本小程序应运而生。\n\n</text>
+    <text space='nbsp' class="text-blue margin-left: 50rpx margin-right: 50rpx">     注册用户既可以发布招募信息，也可以在大厅查看其它用户的招募信息。此外，用户可以利用搜索功能，搜索团队所需人才，比如美工、文案、答辩、编程、调研等等。满足团队的需求，既方便又快捷！</text>
+    </view>
+  </view> 
+</view>

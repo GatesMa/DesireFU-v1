@@ -1,12 +1,12 @@
 <wxs src="../../wxs/subutil.wxs" module="tools" />
 <!--pages/Info/Info.wxml-->
-<view class="cu-bar bg-white lg" style='margin-top:25px'>
-    <view class="action">
-        <text class="cuIcon-appreciatefill text-black"></text>
-        <text bindtap='returnToLogin'></text>
-        <text style='display:block;margin-left:230rpx'>DesireFU</text>
-    </view>
+<view class="cu-bar bg-blue light shaw-blur lg" style='margin-top:25px'>
+  <view class="action">
+    <text class="cuIcon-appreciatefill text-black"></text>
+    <image class="sign" src="../../images/ziti.png"></image>
+  </view>
 </view>
+
 
 <block wx:if="{{!author}}">
     <view class="cu-bar justify-center bg-white">
@@ -27,14 +27,23 @@
     </view>
 </block>
 
+<block wx:if="{{!author}}">
+<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  </swiper-item>
+</swiper>
+</block>
+
 <block wx:for="{{infos}}" wx:key="unique">
-    <view class="post-container margin-left margin-right">
+    <view class="post-container shadow-warp margin-left margin-right">
         <view class="post-author-date">
-            <image class="post-author" src="{{item.author.avatar}}"></image>
+            <image class="post-author round " src="{{item.author.avatar}}"></image>
 
             <text class="post-date text-grey">{{item.created_at}}</text>
 
-            <view class="cu-tag bg-blue margin-right" style='float:right;margin-top:10rpx' bindtap='detail' data-id='{{index}}'>详情</view>
+            <view class="cu-tag bg-blue margin-right " style='float:right;margin-top:10rpx' bindtap='detail' data-id='{{index}}'>详情</view>
         </view>
         <text class="post-title text-cyan">{{item.title}}</text>
         <text class='text-orange padding-left padding-right'>项目简介：

@@ -1,0 +1,49 @@
+<!--pages/mycollect/mycollect.wxml-->
+<wxs src="../../wxs/subutil.wxs" module="tools" />
+<view class="cu-bar bg-white shaw-blur lg" style='margin-top:25px'>
+  <view class="action" bindtap='returnToUserCenter'>
+    <text class="cuIcon-back text-black"></text>
+    <image class="sign" src="../../images/ziti.png"></image>
+  </view>
+</view>
+
+
+<block wx:if="{{!author}}">
+    <view class="cu-bar justify-center bg-white margin-bottom">
+        <view class="action sub-title">
+            <text class="text-xl text-bold text-blue">我的收藏</text>
+            <text class="text-ABC text-blue">collect</text>
+            <!-- last-child选择器-->
+        </view>
+    </view>
+</block>
+
+<block>
+    <view class="cu-bar bg-brown margin-top">
+        <view class="action">
+            <text class="cuIcon-favor text-green"></text>
+            <text>按收藏项目人数排序</text>
+        </view>
+    </view>
+</block>
+
+<!-- 这里user和info是反的，注意！弄数据库的时候弄反弄，不想改 -->
+<block wx:for="{{collections}}" wx:key="unique">
+    <view class="post-container shadow-warp margin-left margin-right">
+        <view class="post-author-date">
+            <image class="post-author round " src="{{item.info.avatar}}"></image>
+
+            <text class="post-date text-grey">{{item.user.created_at}}</text>
+
+            <view class="cu-tag bg-blue margin-right " style='float:right;margin-top:10rpx' bindtap='detail' data-id='{{index}}'>详情</view>
+        </view>
+        <text class="post-title text-cyan">{{item.user.title}}</text>
+        <text class='text-orange padding-left padding-right'>项目简介：
+            <text class="post-content">{{tools.sub(item.user.content)}}</text>
+
+        </text>
+        <text class='text-mauve padding-left padding-right'>具体要求：
+            <text class="post-content">{{tools.sub(item.user.requirement)}}</text>
+        </text>
+    </view>
+</block>

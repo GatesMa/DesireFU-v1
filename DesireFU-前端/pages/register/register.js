@@ -6,16 +6,27 @@ Page({
      * 页面的初始数据
      */
     data: {
-        picker: ['计算机学院', '艺术学院', '华西医学院'],
-        picker2: ['美工', '文案', '编程', '答辩', '调研' ],
+        picker: ['计算机学院', '材料科学与工程学院', '电气信息学院', '电子信息学院', '法学院', '高分子科学与工程学院',
+            '公共管理学院', '华西公共卫生学院', '华西口腔医学院', '华西临床医学院', '华西药学院', '化学学院',
+            '化学工程学院', '建筑与环境学院', '经济学院', '匹兹堡学院', '历史文化学院　（旅游学院）', '轻纺与食品学院',
+            '软件学院', '商学院', '生命科学学院', '数学学院', '水利水电学院', '外国语学院', '文学与新闻学院', '物理科学与技术学院',
+            '艺术学院', '制造科学与工程学院'
+        ],
+        picker2: ['美工', '文案', '编程', '答辩', '调研'],
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         user: {},
-        items: [
-            { name: 'yes', value: '是' , checked: 'true'},
-            { name: 'no', value: '否' },
+        items: [{
+                name: 'yes',
+                value: '是',
+                checked: 'true'
+            },
+            {
+                name: 'no',
+                value: '否'
+            },
         ],
         isRequired: 'yes'
     },
@@ -23,7 +34,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function () {
+    onLoad: function() {
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -55,49 +66,49 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     },
     /**
@@ -120,7 +131,7 @@ Page({
             index2: e.detail.value
         })
     },
-    formSubmit: function (e) {
+    formSubmit: function(e) {
         var that = this
         e.detail.value.acade = this.data.picker[Number(e.detail.value.acade)]
         console.log('form发生了submit事件，携带数据为：', e.detail.value);
@@ -192,17 +203,25 @@ Page({
                     }
                 }
             })
+        } else if (e.detail.value.profile.length <= 20) {
+            //电话有误
+            wx.showModal({
+                title: '提示',
+                content: '个人介绍太短',
+                success(res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定')
+                    } else if (res.cancel) {
+                        console.log('用户点击取消')
+                    }
+                }
+            })
         } else {
             e.detail.value.requireType = Number(e.detail.value.requireType)
             //数据正确，发起网络请求
-            if (app.globalData.userInfo) {
-                // console.log('userInfo:' + userInfo)
-                app.globalData.user.avatar = app.globalData.userInfo.avatarUrl
-            } else {
-                console.log('userInfo为空')
-            }
-            console.log('发起注册网络请求')
             
+            console.log('发起注册网络请求')
+
             wx.request({
                 url: 'https://gatesma.cn:3000/signup', // 仅为示例，并非真实的接口地址
                 method: 'POST',
@@ -212,9 +231,10 @@ Page({
                     realname: e.detail.value.realname,
                     stuid: e.detail.value.stuid,
                     acade: e.detail.value.acade,
-                    avatar: app.globalData.user.avatar,
+                    avatar: app.globalData.userInfo.avatarUrl,
                     phone: e.detail.value.phone,
                     email: e.detail.value.email,
+                    profile: e.detail.value.profile,
                     requireType: e.detail.value.requireType + 1,
                     isRequired: isRequired
                 },
@@ -258,65 +278,8 @@ Page({
                 }
             })
         }
-
-        // if (!username || !pass) {
-        //     //弹出提示，用户名或密码为空
-        //     return;
-        // }
-        // wx.request({
-        //     url: 'https://gatesma.cn:3000/signin', // 仅为示例，并非真实的接口地址
-        //     method: 'POST',
-        //     data: {
-        //         username: e.detail.value.username,
-        //         pass: e.detail.value.pass
-        //     },
-        //     header: {
-        //         'content-type': 'application/json' // 默认值x-www-form-urlencoded
-        //     },
-        //     success(res) {
-        //         if (res.data.type == 0) {
-        //             //密码正确
-        //             wx.showToast({
-        //                 title: '登陆成功',
-        //                 icon: 'success',
-        //                 duration: 1000
-        //             })
-        //             console.log(res.data)
-        //             app.globalData.user = res.data;
-        //             app.globalData.user.avatar = app.globalData.userInfo.avatarUrl
-        //             console.log(app.globalData.user._id)
-        //         } else if (res.data.type == 1) {
-        //             //用户不存在
-        //             wx.showModal({
-        //                 title: '提示',
-        //                 content: '用户不存在',
-        //                 success(res) {
-        //                     if (res.confirm) {
-        //                         console.log('用户点击确定')
-        //                     } else if (res.cancel) {
-        //                         console.log('用户点击取消')
-        //                     }
-        //                 }
-        //             })
-        //         } else if (res.data.type == 2) {
-        //             //用户名或密码错误
-        //             wx.showModal({
-        //                 title: '提示',
-        //                 content: '用户名或密码错误',
-        //                 success(res) {
-        //                     if (res.confirm) {
-        //                         console.log('用户点击确定')
-        //                     } else if (res.cancel) {
-        //                         console.log('用户点击取消')
-        //                     }
-        //                 }
-        //             })
-        //         }
-        //     }
-        // })
-
     },
-    getUserInfo: function (e) {
+    getUserInfo: function(e) {
         console.log(e)
         app.globalData.userInfo = e.detail.userInfo
         this.setData({

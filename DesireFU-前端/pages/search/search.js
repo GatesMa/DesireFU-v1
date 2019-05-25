@@ -42,7 +42,14 @@ Page({
     onHide: function () {
 
     },
-
+    check: function(e){
+        var id = e.currentTarget.dataset.index;
+        let tempUser = JSON.stringify(this.data.userList[id]);
+        wx.navigateTo({
+            url: '../person/person?detail=' + tempUser
+            
+        })
+    },
     /**
      * 生命周期函数--监听页面卸载
      */

@@ -9,7 +9,11 @@
         "pages/usercenter/usercenter",
         "pages/detail/detail",
         "pages/createInfo/createInfo",
-        "pages/edit/edit"
+        "pages/edit/edit",
+        "pages/skin/skin",
+        "pages/about/about",
+        "pages/person/person",
+        "pages/mycollect/mycollect"
     ],
     "window": {
         "backgroundTextStyle": "light",

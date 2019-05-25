@@ -1,4 +1,4 @@
-// pages/login/login.js
+//// pages/login/login.js
 const app = getApp();
 Page({
 
@@ -11,7 +11,8 @@ Page({
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        remind: '加载中'
     },
 
     /**
@@ -51,7 +52,12 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+      var that = this;
+      setTimeout(function () {
+        that.setData({
+          remind: ''
+        });
+      }, 1000);
     },
 
     /**
@@ -117,7 +123,7 @@ Page({
             pass,
         })
         wx.request({
-            url: 'https://gatesma.cn:3000/signin', // 仅为示例，并非真实的接口地址
+            url: 'https://gatesma.cn:3000/signin',
             method: 'POST',
             data: {
                 username: e.detail.value.username,
@@ -178,7 +184,20 @@ Page({
                             }
                         }
                     })
-                }
+              } else if (!(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(e.detail.value.email))) {
+                wx.showModal({
+                  title: '提示',
+                  content: '邮箱有误',
+                  success(res) {
+                    if (res.confirm) {
+                      console.log('用户点击确定')
+                    } else if (res.cancel) {
+                      console.log('用户点击取消')
+                    }
+                  }
+                })
+              }
+
             }
         })
 

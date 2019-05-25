@@ -1,10 +1,12 @@
 <!--pages/createInfo/createInfo.wxml-->
 <view class="cu-bar bg-white lg" style='margin-top:25px'>
-    <view class="action">
-        <text class="cuIcon-back text-black"></text>
-        <text bindtap='returnToUsercenter'>返回</text>
-        <text style='display:block;margin-left:240rpx'>DesireFU</text>
-    </view>
+  <view class="action">
+  <view class="al">
+    <text class="cuIcon-back text-green"></text>
+    <text class="fh" bindtap='pageBack'>返回</text>
+    <image class="sign2" src="../../images/ziti.png"></image>
+  </view>
+  </view>
 </view>
 
 <view class="cu-bar justify-center bg-white" style='margin-top: 20rpx;'>

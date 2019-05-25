@@ -1,6 +1,94 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<!--pages/logs/logs.wxml-->
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+  <view class="action">
+  <view class="al">
+    <text class="cuIcon-back text-green"></text>
+    <text class="fh" bindtap='pageBack'>返回</text>
+    <image class="sign2" src="../../images/ziti.png"></image>
+  </view>
+  </view>
+</view>
+
+<view class="cu-timeline">
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v2.1.0</view>
+        <view class="cu-tag line-white">2019/05/24</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.进行各个页面的美工</view>
+        <view>2.搜索页面可以点击查询用户相关信息</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v2.0.0</view>
+        <view class="cu-tag line-white">2019/05/23</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.增加关于页面</view>
+        <view>2.分析新需求，添加标签查找功能</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-green">
+    <view class="bg-gradual-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v1.3.0</view>
+        <view class="cu-tag line-white">2019/05/21</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.修改登录界面，加入动画</view>
+        <view>2.优化图标样式</view>
+      </view>
+    </view>   
+  </view>
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v1.2.1</view>
+        <view class="cu-tag line-white">2019/05/22</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.修复了登录头像权限bug</view>
+        <view>2.体验版正式上线</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v1.2.0</view>
+        <view class="cu-tag line-white">2019/05/21</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.修复不能注册登录的bug</view>
+        <view>2.纠正一些单词拼写</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v1.1.0</view>
+        <view class="cu-tag line-white">2019/05/20</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.页面增加分享</view>
+        <view>2.完善后端代码</view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v1.0.0</view>
+        <view class="cu-tag line-white">2019/05/19</view>
+      </view>
+      <view class="margin-top-sm text-content">1.0体验版上线</view>
+    </view>
+  </view>
 </view>

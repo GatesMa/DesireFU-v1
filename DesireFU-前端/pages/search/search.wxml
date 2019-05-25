@@ -1,9 +1,11 @@
 <!--pages/search/search.wxml-->
-<view class="cu-bar bg-white lg" style='margin-top:25px'>
+<view>
+    <image class='backpicture' src='../../images/background.jpg'></image>
+</view>
+<view class="cu-bar bg-yellow light shaw-blur lg" style='margin-top:25px'>
     <view class="action">
         <text class="cuIcon-appreciatefill text-black"></text>
-
-        <text style='display:block;margin-left:20rpx'>DesireFU</text>
+        <image class="sign" src="../../images/ziti.png"></image>
     </view>
 </view>
 <view class="cu-bar justify-center bg-white">
@@ -26,12 +28,12 @@
 
 <block wx:if="{{!isSearched}}">
     <view class='margin-left margin-top margin-right'>
-        <view class="cu-tag line-red margin-right">美工</view>
+        <view class="cu-tag line-red solid:2rpx margin-right">美工</view>
         <view class="cu-tag line-olive margin-right">文案</view>
         <view class="cu-tag line-orange margin-right">编程</view>
         <view class="cu-tag line-blue margin-right">答辩</view>
         <view class="cu-tag line-brown margin-right">调研</view>
-        <view class="cu-tag line-grey margin-right">...</view>
+        <view class="cu-tag line-black margin-right">...</view>
     </view>
 </block>
 <block wx:else>
@@ -39,7 +41,7 @@
         <view class="cu-list menu-avatar margin-top">
             <!-- 列表渲染 -->
             <block wx:for="{{userList}}" wx:key="unique">
-                <view class="cu-item">
+                <view class="cu-item" data-index="{{index}}" bindtap="check">
                     <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
                     <view class="content">
                         <view class="text-grey">{{item.realname}}</view>
@@ -57,12 +59,12 @@
 
         </view>
     </block>
-    <view class="padding text-center" wx:else>
+    <view class="padding text-center solid: 2rpx " wx:else>
         <view class="padding-lr bg-white">
             <view class="solid-bottom padding">
                 <text class="text-red">抱歉</text>
             </view>
-            <view class="padding">没有这个标签的用户，换个关键词试试</view>
+            <view class="padding text-red">没有这个标签的用户，换个关键词试试</view>
         </view>
     </view>
 </block>

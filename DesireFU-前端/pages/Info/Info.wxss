@@ -6,9 +6,10 @@
     margin-top: 20rpx;
     margin-bottom: 40rpx;
     background-color: #fff;
-    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid #fef2ce;
     border-top: 1px solid #ededed;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    padding-top: 10px;
 }
 
 .post-author-date {
@@ -16,6 +17,7 @@
 }
 
 .post-author {
+    margin-left: 20rpx;
     width: 60rpx;
     height: 60rpx;
     vertical-align: middle;
@@ -71,3 +73,8 @@
     vertical-align: middle;
     margin-right: 20px;
 }
+.tower-swiper .tower-item {
+		transform: scale(calc(0.5 + var(--index) / 10));
+		margin-left: calc(var(--left) * 100rpx - 150rpx);
+		z-index: var(--index);
+	}

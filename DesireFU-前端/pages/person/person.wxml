@@ -1,0 +1,65 @@
+<view class="cu-bar bg-white lg" style='margin-top:25px'>
+    <view class="action">
+        <view class="al">
+            <text class="cuIcon-back text-green"></text>
+            <text class="fh" bindtap='pageBack'>返回</text>
+            <image class="sign2" src="../../images/ziti.png"></image>
+        </view>
+    </view>
+</view>
+
+<view class="cu-bar justify-center bg-white">
+    <view class="action sub-title">
+        <text class="text-xl text-bold text-green">详细资料</text>
+        <text class="bg-green" style="width:2rem"></text>
+        <!-- last-child选择器-->
+    </view>
+</view>
+
+<view class="post-container">
+    <view class="post-author-date">
+        <image class="cu-avatar lg round margin-left" src="{{tempUser.avatar}}"></image>
+        <text class='margin-left'>{{tempUser.realname}}</text>
+    </view>
+
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-red"></text>
+            <text>学号</text>
+            <text class="post-date">{{tempUser.stuid}}</text>
+        </view>
+    </view>
+
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-orange"></text>
+            <text>学院</text>
+            <text class="post-date">{{tempUser.acade}}</text>
+        </view>
+    </view>
+
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-mauve"></text>
+            <text>联系方式</text>
+        </view>
+    </view>
+    <view class="cu-bar bg-white">
+        <view class="action">
+            电话
+        </view>
+        <view class="content text-black">
+            {{tempUser.phone}}
+        </view>
+        <view class="action">
+            <text class="cuIcon-phone text-green" bindtap='call'>可拨打</text>
+        </view>
+    </view>
+    <view class="cu-bar bg-white">
+        <view class="action">
+            <text class="cuIcon-title text-orange"></text>
+            <text>个人介绍</text>
+            <text class="post-date">{{tempUser.profile}}</text>
+        </view>
+    </view>
+</view>

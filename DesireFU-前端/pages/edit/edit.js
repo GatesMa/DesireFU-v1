@@ -81,21 +81,15 @@ Page({
     onShareAppMessage: function() {
 
     },
-    returnToCenter: function() {
-        wx.reLaunch({
-            url: '../usercenter/usercenter',
-        })
+    pageBack: function () {
+    wx.switchTab({
+      url: '../usercenter/usercenter',
+    })
     },
     pickerChange(e) {
         console.log(e);
         this.setData({
             index: e.detail.value
-        })
-    },
-    bindPickerChange(e) {
-        console.log(e);
-        this.setData({
-            index2: e.detail.value
         })
     },
     formSubmit: function(e) {

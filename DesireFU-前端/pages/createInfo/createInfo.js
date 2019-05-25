@@ -161,9 +161,9 @@ Page({
             })
         }
     },
-    returnToUsercenter: function() {
-        wx.reLaunch({
-            url: '../usercenter/usercenter',
-        })
+    pageBack: function() {
+     wx.switchTab({
+       url: '../usercenter/usercenter',
+     })
     }
 })
