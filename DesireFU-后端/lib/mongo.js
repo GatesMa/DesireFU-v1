@@ -30,7 +30,8 @@ exports.Info = mongolass.model('Info', {
     type: {type: 'string', required: true},//类型（互联网➕/大创）
     content: {type: 'string', required: true},//项目内容简介
     membernum: {type: 'number', required: true},//项目人员个数
-    requirement: {type: 'string', required: true}//项目招聘要求
+    requirement: {type: 'string', required: true},//项目招聘要求
+    pv: {type: 'number', default: 0} // 收藏数
 })
 
 exports.Info.index({ author: 1, _id: -1}).exec()// 按创建时间降序查看用户的文章列表

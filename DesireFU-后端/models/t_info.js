@@ -50,5 +50,18 @@ module.exports = {
             .count(query)
             .exec()
     },
+
+    //通过文章 id 给 pv 加 1
+    incPv: function incPv(infoId) {
+        return Info
+            .update({_id: infoId}, {$inc: {pv : 1}})
+            .exec()
+    },
+    //通过文章 id 给 pv 减一
+    delPv: function delPv(infoId) {
+        return Info
+            .update({_id: infoId}, {$inc: {pv : -1}})
+            .exec()
+    },
 }
 

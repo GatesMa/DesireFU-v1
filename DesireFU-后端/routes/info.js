@@ -152,10 +152,14 @@ router.post('/:infoId/collect', function(req, res, next) {
     const infoId = req.params.infoId
     const userId = req.body.userId
 
-    CollectModel.create(userId, infoId)
+    Promise.all([
+        CollectModel.create(userId, infoId), // 创建收藏
+        InfoModel.incPv(infoId)// pv 加 1
+        ])
         .then(function (result) {
-            // 发表成功后跳转到该文章页
-            res.send(result)
+            const info = result[0]
+    
+            res.send(info)
         })
         .catch(next)
 })
@@ -165,10 +169,14 @@ router.post('/:infoId/dropcollect', function(req, res, next) {
     const infoId = req.params.infoId
     const userId = req.body.userId
 
-    CollectModel.d(userId, infoId)
+    Promise.all([
+        CollectModel.dropCollectById(userId, infoId), // 创建收藏
+        InfoModel.delPv(infoId)// pv 加 1
+        ])
         .then(function (result) {
-            // 发表成功后跳转到该文章页
-            res.send(result)
+
+            const info = result[0]
+            res.send(info)
         })
         .catch(next)
 })
