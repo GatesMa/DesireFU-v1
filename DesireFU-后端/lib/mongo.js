@@ -40,10 +40,13 @@ exports.Info.index({ author: 1, _id: -1}).exec()// 按创建时间降序查看�
 // 收藏
 exports.Collection = mongolass.model('Collection', {
 	userId: {type: Mongolass.Types.ObjectId, required: true},// 用户ID
-  infoId: {type: Mongolass.Types.ObjectId, required: true} // 招募ID
+  infoId: {type: Mongolass.Types.ObjectId, required: true}, // 招募ID
+  user: {type:'object'},
+  info: {type: 'object'},
+  pv: {type: 'number', required: true}//收藏数
 })
 
-exports.Collection.index({infoId: 1, _id: 1}).exec()
+exports.Collection.index( {_id: 1}).exec()
 
 
 

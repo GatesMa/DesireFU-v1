@@ -151,17 +151,27 @@ router.post('/user', function (req, res, next) {
 router.post('/:infoId/collect', function(req, res, next) {
     const infoId = req.params.infoId
     const userId = req.body.userId
-
     Promise.all([
-        CollectModel.create(userId, infoId), // 创建收藏
-        InfoModel.incPv(infoId)// pv 加 1
-        ])
-        .then(function (result) {
-            const info = result[0]
+        UserModel.getUserById(userId),
+        InfoModel.getInfoById(infoId),
+    ]).then(function(result) {
+        info = result[0]
+        user = result[1]
+        console.log('COLLECT: USER')
+        console.log(user)
+        Promise.all([
+            CollectModel.create(userId, infoId, info, user), // 创建收藏
+            InfoModel.incPv(infoId),// pv 加 1
+            CollectModel.incPv(infoId)
+            ])
+            .then(function (result2) {
+                const info = result2[0]
+        
+                res.send(info)
+            })
+            .catch(next)
+    })
     
-            res.send(info)
-        })
-        .catch(next)
 })
 
 // POST /info/:infoId/dropcollect
@@ -171,7 +181,8 @@ router.post('/:infoId/dropcollect', function(req, res, next) {
 
     Promise.all([
         CollectModel.dropCollectById(userId, infoId), // 创建收藏
-        InfoModel.delPv(infoId)// pv 加 1
+        InfoModel.delPv(infoId),// pv - 1
+        CollectModel.delPv(infoId)
         ])
         .then(function (result) {
 
@@ -181,5 +192,36 @@ router.post('/:infoId/dropcollect', function(req, res, next) {
         .catch(next)
 })
 
+router.post('/:infoId/isCollected', function(req, res, next) {
+    console.log('isCollected')
+    const infoId = req.params.infoId
+    const userId = req.body.userId
+
+    var isCollect = ''
+
+    CollectModel.getIsCollectted(userId, infoId)
+        .then(function(result) {
+            if(result) {
+				isCollect = true
+			} else {
+				isCollect = false
+            }
+            console.log(isCollect)
+            res.send(JSON.stringify({isCollect: isCollect}))
+        })
+        .catch(next)
+})
+
+//获取全部收藏
+router.post('/mycollect', function(req, res, next) {
+    const userId = req.body.userId
+
+    CollectModel.getCollectionsByUserId(userId)
+        .then(function(result) {
+            res.send(result)
+        })
+        .catch(next)
+
+})
 
 module.exports = router

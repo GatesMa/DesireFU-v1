@@ -2,10 +2,14 @@ const Collection = require('../lib/mongo').Collection
 
 module.exports = {
     // 创建一个收藏
-    create: function create(userId, infoId) {
+    create: function create(userId, infoId, info, user) {
+        pv = user.pv
         let tem = {
             userId: userId,
-            infoId: infoId
+            infoId: infoId,
+            info: info,
+            user: user,
+            pv: pv
         }
         return Collection.create(tem).exec()
     },
@@ -13,6 +17,7 @@ module.exports = {
     getCollectionsByUserId: function getCollectionsByUserId (userId) {
         return Collection
             .find( { userId: userId } )
+            .sort({pv: -1})
             .exec()
     },
      // 通过用户id和招募id查找数据
@@ -33,5 +38,17 @@ module.exports = {
     // 获取一个招募的关注数
     getFollowsContById: function getFollowsContById(infoId) {
         return Collection.count({infoId: infoId}).exec()
-    }
+    },
+    //通过文章 id 给 pv 加 1
+    incPv: function incPv(infoId) {
+        return Collection
+            .update({infoId: infoId}, {$inc: {pv : 1}})
+            .exec()
+    },
+    //通过文章 id 给 pv 减一
+    delPv: function delPv(infoId) {
+        return Collection
+            .update({infoId: infoId}, {$inc: {pv : -1}})
+            .exec()
+    },
 }
