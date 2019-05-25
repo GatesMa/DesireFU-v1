@@ -10,6 +10,7 @@ const UserModel = require('../models/t_user')
 router.get('/', function (req, res) {
     res.send('/user')
 })
+
 router.post('/:userId/edit', function(req, res, next) {
     console.log('----------------edit-----------------')
     console.log('edit'+req.body)
@@ -57,5 +58,7 @@ router.post('/:userId/edit', function(req, res, next) {
             res.send(resultUser)
         })
 })
+
+
 
 module.exports = router

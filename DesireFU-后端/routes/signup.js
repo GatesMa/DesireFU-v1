@@ -17,7 +17,7 @@ router.post('/', function (req, res) {
     console.log(req.body)
     const username = req.body.username //账户名
     pass = req.body.pass //密码
-    const repass = req.body.repass // 重复密码
+    
     const realname = req.body.realname //真名
     const stuid = req.body.stuid //学号
     const acade = req.body.acade //学院
@@ -25,6 +25,8 @@ router.post('/', function (req, res) {
     const email = req.body.email //邮箱
 
     const avatar = req.body.avatar //头像
+
+    const profile = req.body.profile //简介
 
     const requireType = req.body.requireType // 用户类型
     const isRequired = req.body.isRequired //是否愿意被招募
@@ -44,6 +46,7 @@ router.post('/', function (req, res) {
         avatar: avatar,
         phone: phone,
         email: email,
+        profile: profile,
         requireType: requireType,
         isRequired: isRequired
     }

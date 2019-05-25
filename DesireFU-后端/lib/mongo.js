@@ -6,7 +6,7 @@ const mongolass = new Mongolass()
 mongolass.connect('mongodb://admin:passwd@47.102.121.0:27017/DesireFU?authSource=admin')
 
 
-//用户
+// 用户
 exports.User = mongolass.model('User', {
     username: {type: 'string', required: true},//账户
     pass: {type: 'string', required: true},//密码
@@ -16,13 +16,14 @@ exports.User = mongolass.model('User', {
     avatar: {type: 'string', default: ''},//头像
     phone: {type: 'string', required:true},//电话
     email: {type: 'string', required: true},//邮箱
+    profile: {type: 'string', required: true},
     requireType: {type: 'number', required: true}, //用户类型
-    isRequired: {type: 'string', required: true}
+    isRequired: {type: 'string', required: true} //是否愿意被招募
 })
 
 exports.User.index({ username: 1 }, { unique: true }).exec()// 根据用户名找到用户，用户名全局唯一
 
-//招募
+// 招募
 exports.Info = mongolass.model('Info', {
   	author: {type: Mongolass.Types.ObjectId, required: true},//用户作者
     title: {type: 'string', required: true},//标题
@@ -33,6 +34,15 @@ exports.Info = mongolass.model('Info', {
 })
 
 exports.Info.index({ author: 1, _id: -1}).exec()// 按创建时间降序查看用户的文章列表
+
+
+// 收藏
+exports.Collection = mongolass.model('Collection', {
+	userId: {type: Mongolass.Types.ObjectId, required: true},// 用户ID
+  infoId: {type: Mongolass.Types.ObjectId, required: true} // 招募ID
+})
+
+exports.Collection.index({infoId: 1, _id: 1}).exec()
 
 
 

@@ -3,7 +3,7 @@ const router = express.Router()
 var url = require("url");
 const InfoModel = require('../models/t_info')
 const UserModel = require('../models/t_user')
-
+const CollectModel = require('../models/Collection')
 // GET /info 
 //   eg: GET /info?author=xxx
 router.get('/', function (req, res, next) {
@@ -135,6 +135,7 @@ router.get('/:infoId/remove', function (req, res, next) {
             })
 })
 
+// POST 根据招募类型查找用户
 router.post('/user', function (req, res, next) {
     console.log('/user')
     const requireType = Number(req.body.requireType) //招募要求
@@ -146,6 +147,31 @@ router.post('/user', function (req, res, next) {
         .catch(next)
 })
 
+// POST /info/:infoId/collect
+router.post('/:infoId/collect', function(req, res, next) {
+    const infoId = req.params.infoId
+    const userId = req.body.userId
+
+    CollectModel.create(userId, infoId)
+        .then(function (result) {
+            // 发表成功后跳转到该文章页
+            res.send(result)
+        })
+        .catch(next)
+})
+
+// POST /info/:infoId/dropcollect
+router.post('/:infoId/dropcollect', function(req, res, next) {
+    const infoId = req.params.infoId
+    const userId = req.body.userId
+
+    CollectModel.d(userId, infoId)
+        .then(function (result) {
+            // 发表成功后跳转到该文章页
+            res.send(result)
+        })
+        .catch(next)
+})
 
 
 module.exports = router
