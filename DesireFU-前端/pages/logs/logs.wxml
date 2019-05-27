@@ -4,12 +4,26 @@
   <view class="al">
     <text class="cuIcon-back text-green"></text>
     <text class="fh" bindtap='pageBack'>返回</text>
-    <image class="sign2" src="../../images/ziti.png"></image>
+    <image class="sign2" src="https://www.gatesma.cn/myfile/img/ziti.png"></image>
   </view>
   </view>
 </view>
 
 <view class="cu-timeline">
+ <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v2.2.0</view>
+        <view class="cu-tag line-white">2019/05/25</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.新增收藏功能</view>
+        <view>2.添加个人介绍属性</view>
+        <view>3.添加我的收藏功能</view>
+        <view>4.优化搜索算法</view>
+      </view>
+    </view>
+  </view>
   <view class="cu-item text-green">
     <view class="bg-green content shadow">
       <view class="cu-capsule radius">

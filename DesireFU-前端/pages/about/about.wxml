@@ -5,11 +5,12 @@
   <view class="al">
     <text class="cuIcon-back text-green"></text>
     <text class="fh" bindtap='pageBack'>返回</text>
-    <image class="sign2" src="../../images/ziti.png"></image>
+    <image class="sign2" src="https://www.gatesma.cn/myfile/img/ziti.png"></image>
   </view>
   </view>
 </view>
-<view class="bg-img bg-mask padding-tb-xl" style="background-image: url('../../images/background2.jpg');height: 1200rpx;">
+
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
   <view class='text-content border:1 rpx' >
     <view class='text-center margin-bottom text-xxl  text-red'>关于DesireFU</view>
     <image src='https://www.gatesma.cn/myfile/img/icon.png' class="ime" mode="aspectFill"></image>
@@ -18,4 +19,4 @@
     <text space='nbsp' class="text-blue margin-left: 50rpx margin-right: 50rpx">     注册用户既可以发布招募信息，也可以在大厅查看其它用户的招募信息。此外，用户可以利用搜索功能，搜索团队所需人才，比如美工、文案、答辩、编程、调研等等。满足团队的需求，既方便又快捷！</text>
     </view>
   </view> 
-</view>
+  </view>

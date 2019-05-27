@@ -3,7 +3,7 @@
 <view class="cu-bar bg-white shaw-blur lg" style='margin-top:25px'>
   <view class="action" bindtap='returnToUserCenter'>
     <text class="cuIcon-back text-black"></text>
-    <image class="sign" src="../../images/ziti.png"></image>
+    <image class="sign" src="https://www.gatesma.cn/myfile/img/ziti.png"></image>
   </view>
 </view>
 
@@ -31,7 +31,7 @@
 <block wx:for="{{collections}}" wx:key="unique">
     <view class="post-container shadow-warp margin-left margin-right">
         <view class="post-author-date">
-            <image class="post-author round " src="{{item.info.avatar}}"></image>
+            <image class="post-author round " src="{{item.user.author.avatar}}"></image>
 
             <text class="post-date text-grey">{{item.user.created_at}}</text>
 

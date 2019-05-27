@@ -1,16 +1,16 @@
 <view > 
-<image class = 'backpicture' src='../../images/background.jpg'></image>
+<image class = 'backpicture'></image>
 </view>
 <view class="cu-bar bg-white shaw-blur lg" style='margin-top:25px'>
   <view class="action">
     <text class="cuIcon-appreciatefill text-black"></text>
-    <image class="sign" src="../../images/ziti.png"></image>
+    <image class="sign" src="https://www.gatesma.cn/myfile/img/ziti.png"></image>
   </view>
 </view>
 
 
 <view class="remind-box" wx:if="{{remind}}">
-    <image class="remind-img" src="../../images/loading.gif"></image>
+    <image class="remind-img" src="https://www.gatesma.cn/myfile/img/loading.gif"></image>
   </view>
   <block wx:else>
  <view class="content">

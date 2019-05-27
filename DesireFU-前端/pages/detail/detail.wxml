@@ -4,7 +4,7 @@
         <view class="al">
             <text class="cuIcon-back text-green"></text>
             <text class="fh" bindtap='pageBack'>返回</text>
-            <image class="sign2" src="../../images/ziti.png"></image>
+            <image class="sign2" src="https://www.gatesma.cn/myfile/img/ziti.png"></image>
         </view>
     </view>
 </view>

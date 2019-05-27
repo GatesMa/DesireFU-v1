@@ -75,7 +75,7 @@ Page({
     },
     call: function() {
         wx.makePhoneCall({
-            phoneNumber: this.data.phone
+            phoneNumber: this.data.tempUser.phone
         })
     },
 })

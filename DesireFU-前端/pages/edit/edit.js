@@ -7,7 +7,12 @@ Page({
      */
     data: {
         user: '',
-        picker: ['计算机学院', '艺术学院', '华西医学院'],
+        picker: ['计算机学院', '材料科学与工程学院', '电气信息学院', '电子信息学院', '法学院', '高分子科学与工程学院',
+        '公共管理学院', '华西公共卫生学院', '华西口腔医学院', '华西临床医学院', '华西药学院', '化学学院',
+        '化学工程学院', '建筑与环境学院', '经济学院', '匹兹堡学院', '历史文化学院　（旅游学院）', '轻纺与食品学院',
+        '软件学院', '商学院', '生命科学学院', '数学学院', '水利水电学院', '外国语学院', '文学与新闻学院', '物理科学与技术学院',
+        '艺术学院', '制造科学与工程学院'
+      ],
         picker2: ['美工', '文案', '编程', '答辩', '调研'],
         items: [{
                 name: 'yes',
@@ -92,6 +97,18 @@ Page({
             index: e.detail.value
         })
     },
+  pickerChange(e) {
+    console.log(e);
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  bindPickerChange(e) {
+    console.log(e);
+    this.setData({
+      index2: e.detail.value
+    })
+  },
     formSubmit: function(e) {
         var that = this
         e.detail.value.acade = this.data.picker[Number(e.detail.value.acade)]
@@ -151,7 +168,20 @@ Page({
                     }
                 }
             })
-        } else if (e.detail.value.phone.length != 11) {
+        } else if (e.detail.value.profile.length <= 20) {
+          //电话有误
+          wx.showModal({
+            title: '提示',
+            content: '个人介绍太短',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }  else if (e.detail.value.phone.length != 11) {
             //电话有误
             wx.showModal({
                 title: '提示',
@@ -182,6 +212,7 @@ Page({
                     acade: e.detail.value.acade,
                     phone: e.detail.value.phone,
                     email: e.detail.value.email,
+                    profile: e.detail.value.profile,
                     requireType: e.detail.value.requireType + 1,
                     isRequired: isRequired
                 },
@@ -214,8 +245,6 @@ Page({
                             duration: 1000
                         })
                     } 
-
-
                 }
             })
         }

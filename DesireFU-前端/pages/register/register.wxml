@@ -97,3 +97,4 @@
     </view>
     <button class="cu-btn bg-cyan lg" id='register' formType="submit">注册</button>
 </form>
+<view class='margin-bottom padding-bottom'></view>

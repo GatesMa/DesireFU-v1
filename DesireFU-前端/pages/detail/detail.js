@@ -42,11 +42,20 @@ Page({
                 'content-type': 'application/json' // 默认值x-www-form-urlencoded
             },
             success(res) {
+                
+                console.log('detail success')
+                console.log(res.data)
                 that.setData({
                     info: res.data
                 })
+            },
+            fail(e) {
+                console.log('detail fail')
             }
+
+            
         })
+        
 
         //获取是否收藏这篇文章
         wx.request({

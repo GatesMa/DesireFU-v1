@@ -11,19 +11,19 @@ Page({
         swiperList: [{
         id: 0,
         type: 'image',
-        url: '../../images/swiper1.png'
+          url: 'https://www.gatesma.cn/myfile/img/swiper1.png'
       }, {
         id: 1,
         type: 'image',
-        url: '../../images/swiper2.jpg',
+            url: 'https://www.gatesma.cn/myfile/img/swiper2.png',
       }, {
         id: 2,
         type: 'image',
-        url: '../../images/swiper3.jpg'
+            url: 'https://www.gatesma.cn/myfile/img/swiper3.png'
       }, {
         id: 3,
         type: 'image',
-       url: '../../images/swiper4.jpg'
+            url: 'https://www.gatesma.cn/myfile/img/swiper4.png'
       }],
     },
 

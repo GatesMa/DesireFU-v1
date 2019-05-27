@@ -3,7 +3,7 @@
   <view class="al">
     <text class="cuIcon-back text-green"></text>
     <text class="fh" bindtap='pageBack'>返回</text>
-    <image class="sign2" src="../../images/ziti.png"></image>
+    <image class="sign2" src="https://www.gatesma.cn/myfile/img/ziti.png"></image>
   </view>
   </view>
 </view>
@@ -40,6 +40,10 @@
         <input placeholder="学号" name="stuid" type='text' value='{{user.stuid}}'></input>
         <text class="cuIcon-info text-orange"></text>
     </view>
+     <view class="cu-form-group margin-left margin-right">
+        <view class="title">个人介绍</view>
+        <textarea placeholder="个人介绍（至少20字符）" name="profile" type='textarea' value='{{user.profile}}'></textarea>
+    </view>
     <view class="cu-form-group margin-top margin-left margin-right">
         <view class="title">学院</view>
         <picker bindchange="pickerChange" value="{{index}}" range="{{picker}}" name="acade">
@@ -68,9 +72,9 @@
     </view>
     <view class="cu-form-group margin-top margin-left margin-right">
         <view class="title">你的用户标签</view>
-        <picker bindchange="pickerChange" value="{{index}}" range="{{picker2}}" name="requireType">
+        <picker bindchange="bindPickerChange" value="{{index2}}" range="{{picker2}}" name="requireType">
             <view class="picker">
-                {{index?picker2[index]:'美工'}}
+                {{index2?picker2[index2]:'美工'}}
             </view>
         </picker>
     </view>
@@ -82,5 +86,7 @@
             </label>
         </radio-group>
     </view>
+ 
     <button class="cu-btn bg-blue lg" id='register' formType="submit">修改</button>
 </form>
+<view class='margin-bottom padding-top'></view>
