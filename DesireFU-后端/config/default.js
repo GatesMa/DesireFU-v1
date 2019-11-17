@@ -5,5 +5,5 @@ module.exports = {
       key: 'myblog',
       maxAge: 2592000000
     },
-    mongodb: 'mongodb://admin:passwd@47.102.121.0:27017/DesireFU?authSource=admin'
+    mongodb: 'mongodb://admin:passwd@127.0.0.1:27017/DesireFU?authSource=admin'
 }
