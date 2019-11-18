@@ -1,5 +1,6 @@
 // pages/register/register.js
 const app = getApp()
+const ip=app.ip
 Page({
 
     /**
@@ -190,21 +191,36 @@ Page({
                     }
                 }
             })
-        } else if (e.detail.value.phone.length != 11) {
-            //电话有误
-            wx.showModal({
-                title: '提示',
-                content: '电话有误',
-                success(res) {
-                    if (res.confirm) {
-                        console.log('用户点击确定')
-                    } else if (res.cancel) {
-                        console.log('用户点击取消')
-                    }
-                }
-            })
-        } else if (e.detail.value.profile.length <= 20) {
-            //电话有误
+        } 
+        // else if (e.detail.value.phone.length != 11) {
+        //     //电话有误
+        //     wx.showModal({
+        //         title: '提示',
+        //         content: '电话有误',
+        //         success(res) {
+        //             if (res.confirm) {
+        //                 console.log('用户点击确定')
+        //             } else if (res.cancel) {
+        //                 console.log('用户点击取消')
+        //             }
+        //         }
+        //     })
+        // }
+        else if (e.detail.value.email.length<=1){
+          wx.showModal({
+            title: '提示',
+            content: '邮箱有误',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
+         else if (e.detail.value.profile.length <= 20) {
+            //介绍有误
             wx.showModal({
                 title: '提示',
                 content: '个人介绍太短',
@@ -223,7 +239,7 @@ Page({
             console.log('发起注册网络请求')
 
             wx.request({
-                url: 'https://gatesma.cn:3000/signup', // 仅为示例，并非真实的接口地址
+                url: ip+'/signup', // 仅为示例，并非真实的接口地址
                 method: 'POST',
                 data: {
                     username: e.detail.value.username,

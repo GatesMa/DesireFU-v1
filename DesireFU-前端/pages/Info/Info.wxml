@@ -36,14 +36,14 @@
 </swiper>
 </block>
 
-<block wx:for="{{infos}}" wx:key="unique">
+<block wx:for="{{showinfos}}" wx:key="unique">
     <view class="post-container shadow-warp margin-left margin-right">
         <view class="post-author-date">
             <image class="post-author round " src="{{item.author.avatar}}"></image>
 
             <text class="post-date text-grey">{{item.created_at}}</text>
 
-            <view class="cu-tag bg-blue margin-right " style='float:right;margin-top:10rpx' bindtap='detail' data-id='{{index}}'>详情</view>
+            <view class="cu-tag bg-blue margin-right " style='float:right;margin-top:10rpx' bindtap='detail' data-id='{{pageIndex*limit+index}}'>详情</view>
         </view>
         <text class="post-title text-cyan">{{item.title}}</text>
         <text class='text-orange padding-left padding-right'>项目简介：
@@ -51,7 +51,12 @@
 
         </text>
         <text class='text-mauve padding-left padding-right'>具体要求：
-            <text class="post-content">{{tools.sub(item.requirement)}}</text>
+            <text class="post-content1">{{tools.sub(item.requirement)}}</text>
         </text>
     </view>
 </block>
+<view >
+<button class="cu-btn bg-cyan margin-tb-sm lg btns" bindtap='last'>上一页</button>
+<text class="idx">{{pageIndex+1}}/{{len}}</text>
+<button class="cu-btn bg-red margin-tb-sm lg btnr" bindtap='next'>下一页</button>
+</view>

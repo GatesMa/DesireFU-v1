@@ -1,12 +1,17 @@
 // pages/Info/Info.js
 const app = getApp()
+var ip=app.ip
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        infos: "123456",
+        len: 1,
+        infos: [],
+        limit: 6, //当前页的数据条数
+        pageIndex: 0, //页码
+        showinfos:[],
         author: '',
         swiperList: [{
         id: 0,
@@ -46,7 +51,7 @@ Page({
         if (!app.globalData.author) { 
             console.log('author为空')
             wx.request({
-                url: 'https://gatesma.cn:3000/info', // 仅为示例，并非真实的接口地址
+                url: ip+'/info', 
                 method: 'GET',
                 data: {
 
@@ -59,7 +64,25 @@ Page({
                     that.setData({
                         infos: app.globalData.infos
                     })
-                    console.log(app.globalData.infos)
+                  var teminfos = []
+
+                  for (let i = 0; i < that.data.limit; i++) {
+                    teminfos[i] = that.data.infos[i]
+                  }
+                  if (that.data.infos.length > that.data.limit) {
+                    that.setData({
+                      showinfos: teminfos,
+                      len: Math.floor((that.data.infos.length - 1) / that.data.limit)+1
+                    })
+                  }
+                  else {
+                    that.setData({
+                      showinfos: that.data.infos,
+                       len: Math.floor((that.data.infos.length - 1) / that.data.limit) + 1
+                    })
+                  }
+                  console.log(that.data.infos)
+                  console.log(that.data.showinfos)
                 }
             }) 
         } else {
@@ -68,7 +91,7 @@ Page({
             })
             console.log('个人招募：' + app.globalData.author)
             wx.request({
-                url: 'https://gatesma.cn:3000/info?author=' + app.globalData.author, // 仅为示例，并非真实的接口地址
+                url: ip+'/info?author=' + app.globalData.author, // 仅为示例，并非真实的接口地址
                 method: 'GET',
                 data: {
 
@@ -81,10 +104,29 @@ Page({
                     that.setData({
                         infos: app.globalData.infos
                     })
-                    console.log(app.globalData.infos)
+                  var teminfos = []
+                  
+                  for (let i = 0; i < that.data.limit; i++) {
+                    teminfos[i] = that.data.infos[i]
+                  }
+                  if (that.data.infos.length>that.data.limit){
+                    that.setData({
+                      showinfos: teminfos,
+                      len: Math.floor((that.data.infos.length - 1) / that.data.limit) + 1
+                    })
+                  }
+                  else {
+                    that.setData({
+                      showinfos:that.data.infos,
+                      len: Math.floor((that.data.infos.length - 1) / that.data.limit) + 1
+                    })
+                  }
+                  console.log(that.data.infos)
+                  console.log(that.data.showinfos)
                 }
             }) 
         }
+      
         
         
     },
@@ -100,26 +142,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        // console.log('onShow')
-        // app.globalData.author = ''
-        // var that = this;
-        // wx.request({
-        //     url: 'https://gatesma.cn:3000/info', // 仅为示例，并非真实的接口地址
-        //     method: 'GET',
-        //     data: {
-
-        //     },
-        //     header: {
-        //         'content-type': 'application/json' // 默认值x-www-form-urlencoded
-        //     },
-        //     success(res) {
-        //         app.globalData.infos = res.data
-        //         that.setData({
-        //             infos: app.globalData.infos
-        //         })
-        //         console.log(app.globalData.infos)
-        //     }
-        // }) 
     },
 
     /**
@@ -140,7 +162,98 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+      wx.showLoading({
+        title: '加载中'
+      })
+      var that=this
+      that.setData({
+        pageIndex:0
+      })
+      if (!app.globalData.author) {
+        console.log('author为空')
+        wx.request({
+          url: ip + '/info',
+          method: 'GET',
+          data: {
 
+          },
+          header: {
+            'content-type': 'application/json' // 默认值x-www-form-urlencoded
+          },
+          success(res) {
+            app.globalData.infos = res.data
+            that.setData({
+              infos: app.globalData.infos
+            })
+            var teminfos = []
+
+            for (let i = 0; i < that.data.limit; i++) {
+              teminfos[i] = that.data.infos[i]
+            }
+            if (that.data.infos.length > that.data.limit) {
+              that.setData({
+                showinfos: teminfos,
+                len: Math.floor((that.data.infos.length - 1) / that.data.limit) + 1
+              })
+            }
+            else {
+              that.setData({
+                showinfos: that.data.infos,
+                len: Math.floor((that.data.infos.length - 1) / that.data.limit) + 1
+              })
+            }
+            console.log(that.data.infos)
+            console.log(that.data.showinfos)
+          }
+        })
+      } else {
+        that.setData({
+          author: app.globalData.author
+        })
+        console.log('个人招募：' + app.globalData.author)
+        wx.request({
+          url: ip + '/info?author=' + app.globalData.author, // 仅为示例，并非真实的接口地址
+          method: 'GET',
+          data: {
+
+          },
+          header: {
+            'content-type': 'application/json' // 默认值x-www-form-urlencoded
+          },
+          success(res) {
+            app.globalData.infos = res.data
+            that.setData({
+              infos: app.globalData.infos
+            })
+            var teminfos = []
+
+            for (let i = 0; i < that.data.limit; i++) {
+              teminfos[i] = that.data.infos[i]
+            }
+            if (that.data.infos.length > that.data.limit) {
+              that.setData({
+                showinfos: teminfos,
+                len: Math.floor((that.data.infos.length - 1) / that.data.limit) + 1
+              })
+            }
+            else {
+              that.setData({
+                showinfos: that.data.infos,
+                len: Math.floor((that.data.infos.length - 1) / that.data.limit) + 1
+              })
+            }
+            console.log(that.data.infos)
+            console.log(that.data.showinfos)
+          }
+        })
+      }
+      console.log('onPullDownRefresh')
+    // 3秒模拟数据加载
+    setTimeout(function () {
+      // 不加这个方法真机下拉会一直处于刷新状态，无法复位
+      wx.hideLoading()
+      wx.stopPullDownRefresh()
+    }, 1000)
     },
 
     /**
@@ -222,5 +335,77 @@ Page({
         swiperList: list
       })
     }
+  },
+  next: function (e) {
+    var that = this
+    if (that.data.infos.length<=that.data.limit) {
+      wx.showModal({
+        title: '提示',
+        content: '亲，最后一页了~',
+        showCancel: false
+      })
+      return false
+    }
+    if (that.data.pageIndex == Math.floor((that.data.infos.length-1) / that.data.limit)) {
+      wx.showModal({
+        title: '提示',
+        content: '亲，最后一页了~',
+        showCancel: false
+      })
+      return false
+    }
+    var idx = that.data.pageIndex + 1
+    that.setData({
+        pageIndex: idx
+    })
+    if (that.data.pageIndex == Math.floor((that.data.infos.length-1) / that.data.limit)) {
+      //显示剩余的条数
+      var teminfos = []
+      for (let i = 0; i < Math.floor((that.data.infos.length-1) % that.data.limit)+1; i++) {
+        teminfos[i] = that.data.infos[i + that.data.pageIndex * that.data.limit]
+      }
+      that.setData({
+        showinfos:teminfos
+      })
+    }
+    else {
+      //显示
+      var teminfos = []
+      for (let i = 0; i < that.data.limit; i++) {
+        teminfos[i] = that.data.infos[i + that.data.pageIndex * that.data.limit]
+      }
+      that.setData({
+        showinfos: teminfos
+      })
+    }
+    console.log(that.data.infos)
+    console.log(that.data.showinfos)
+  },
+  //上一页
+  last: function (e) {
+    var that = this
+    if (that.data.pageIndex == 0) {
+      wx.showModal({
+        title: '提示',
+        content: '亲, 没有上一页了~',
+        showCancel: false
+      })
+      return false
+    }
+    else {
+      var lastpageIndex = that.data.pageIndex - 1
+      that.setData({
+        pageIndex: lastpageIndex
+      })
+      var teminfos = []
+      for (let i = 0; i < that.data.limit; i++) {
+        teminfos[i] = that.data.infos[i + that.data.pageIndex * that.data.limit]
+      }
+      that.setData({
+        showinfos: teminfos
+      })
+    }
+    console.log(that.data.infos)
+    console.log(that.data.showinfos)
   }
 })

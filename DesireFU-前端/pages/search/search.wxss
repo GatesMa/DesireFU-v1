@@ -1,1 +1,14 @@
 /* pages/search/search.wxss */
+
+
+.idx{
+    margin-left: 140rpx;
+}
+
+.btns{
+  margin-left:  40rpx;
+} 
+
+.btnr{
+  margin-left:  150rpx;
+} 

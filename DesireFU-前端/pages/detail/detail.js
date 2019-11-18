@@ -1,5 +1,6 @@
 // pages/detail/detail.js
 const app = getApp()
+const ip=app.ip
 Page({
 
     /**
@@ -34,7 +35,7 @@ Page({
         var infoId = this.data._id
         var userId = this.data.user._id
         wx.request({
-            url: 'https://gatesma.cn:3000/info/' + infoId, // 仅为示例，并非真实的接口地址
+            url: ip+'/info/' + infoId, // 仅为示例，并非真实的接口地址
             method: 'GET',
             data: {
             },
@@ -59,7 +60,7 @@ Page({
 
         //获取是否收藏这篇文章
         wx.request({
-            url: 'https://gatesma.cn:3000/info/' + infoId + '/isCollected', // 仅为示例，并非真实的接口地址
+            url: ip+'/info/' + infoId + '/isCollected', // 仅为示例，并非真实的接口地址
             method: 'POST',
             data: {
                 userId: userId
@@ -139,7 +140,7 @@ Page({
         console.log('remove:' + infoId);
         
         wx.request({
-            url: 'https://gatesma.cn:3000/info/' + infoId + '/remove', // 仅为示例，并非真实的接口地址
+            url: ip+'/info/' + infoId + '/remove', // 仅为示例，并非真实的接口地址
             method: 'GET',
             data: {
 
@@ -172,7 +173,7 @@ Page({
         console.log('collect:' + infoId + '+' + userId);
 
         wx.request({
-            url: 'https://gatesma.cn:3000/info/' + infoId + '/collect', // 仅为示例，并非真实的接口地址
+            url: ip+'/info/' + infoId + '/collect', // 仅为示例，并非真实的接口地址
             method: 'POST',
             data: {
                 userId: userId
@@ -206,7 +207,7 @@ Page({
         console.log('dropcollect:' + infoId + '+' + userId);
 
         wx.request({
-            url: 'https://gatesma.cn:3000/info/' + infoId + '/dropcollect', // 仅为示例，并非真实的接口地址
+            url: ip+'/info/' + infoId + '/dropcollect', // 仅为示例，并非真实的接口地址
             method: 'POST',
             data: {
                 userId: userId

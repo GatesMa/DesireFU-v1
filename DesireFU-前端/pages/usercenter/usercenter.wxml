@@ -12,7 +12,8 @@
 </view>
 
 <view class="personalMe">
-    <open-data type="userAvatarUrl" style="width:68px;height:68px;border:1px solid #ddd;float:left;margin:20rpx 20rpx;border-radius: 50%;"></open-data>
+    <!-- <open-data type="userAvatarUrl" style="width:68px;height:68px;border:1px solid #ddd;float:left;margin:20rpx 20rpx;border-radius: 50%;"></open-data> -->
+    <image style="width:68px;height:68px;border:1px solid #ddd;float:left;margin:20rpx 20rpx;border-radius: 50%;" src="{{user.avatar}}"></image>
     <view class="personalInfo">
         <text class="text-brown">用户名: {{user.username}}</text>
         <text class="text-brown">电话: {{user.phone}}</text>

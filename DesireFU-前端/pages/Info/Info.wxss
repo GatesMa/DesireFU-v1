@@ -12,6 +12,18 @@
     padding-top: 10px;
 }
 
+.idx{
+    margin-left: 140rpx;
+}
+
+.btns{
+  margin-left:  40rpx;
+} 
+
+.btnr{
+  margin-left:  150rpx;
+} 
+
 .post-author-date {
     margin: 10rpx 0 20rpx 10rpx;
 }
@@ -50,6 +62,14 @@
     font-size: 28rpx;
     margin-bottom: 20rpx;
     margin-left: 20rpx;
+    letter-spacing: 2rpx;
+    line-height: 40rpx;
+    word-break:break-all;
+}
+.post-content1 {
+    color: #666;
+    font-size: 28rpx;
+    margin-bottom: 20rpx;
     letter-spacing: 2rpx;
     line-height: 40rpx;
     word-break:break-all;

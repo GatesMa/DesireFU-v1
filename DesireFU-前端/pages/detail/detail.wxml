@@ -38,7 +38,7 @@
                 {{info.pv}}
             </view>
         </view>
-        <view class="cu-capsule radius margin-right margin-top" style='float:right' wx:if="{{info.author._id == user._id}}" bindtap='removeInfo'>
+        <view class="cu-capsule radius margin-right margin-top" style='float:right' wx:if="{{info.author._id == user._id || user.username == 'GatesMa' || user.username == 'blank' || user.username == 'tgyylcb' || user.username == '寒冰射手'}}" bindtap='removeInfo'>
             <view class="cu-tag bg-red ">
                 删除招募
             </view>

@@ -19,16 +19,16 @@
 <view class="post-container">
     <view class="post-author-date">
         <image class="cu-avatar lg round margin-left" src="{{tempUser.avatar}}"></image>
-        <text class='margin-left'>{{tempUser.realname}}</text>
+        <text class='margin-left'>{{tempUser.username}}</text>
     </view>
 
-    <view class="cu-bar bg-white">
+    <!-- <view class="cu-bar bg-white">
         <view class="action">
             <text class="cuIcon-title text-red"></text>
             <text>学号</text>
             <text class="post-date">{{tempUser.stuid}}</text>
         </view>
-    </view>
+    </view> -->
 
     <view class="cu-bar bg-white">
         <view class="action">
@@ -44,7 +44,7 @@
             <text>联系方式</text>
         </view>
     </view>
-    <view class="cu-bar bg-white">
+    <!-- <view class="cu-bar bg-white">
         <view class="action">
             电话
         </view>
@@ -53,6 +53,14 @@
         </view>
         <view class="action">
             <text class="cuIcon-phone text-green" bindtap='call'>可拨打</text>
+        </view>
+    </view> -->
+    <view class="cu-bar bg-white">
+        <view class="action">
+            邮箱
+        </view>
+        <view class="content text-black">
+            {{tempUser.email}}
         </view>
     </view>
     <view class="cu-bar bg-white">

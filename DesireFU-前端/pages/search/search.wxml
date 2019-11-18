@@ -40,23 +40,27 @@
     <block wx:if="{{length!=0}}">
         <view class="cu-list menu-avatar margin-top">
             <!-- 列表渲染 -->
-            <block wx:for="{{userList}}" wx:key="unique">
-                <view class="cu-item" data-index="{{index}}" bindtap="check">
+            <block wx:for="{{showinfos}}" wx:key="unique">
+                <view class="cu-item" data-index="{{pageIndex*limit+index}}" bindtap="check">
                     <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
                     <view class="content">
-                        <view class="text-grey">{{item.realname}}</view>
-                        <view class="text-gray text-sm flex">
+                        <view class="text-grey" style="margin-top:10rpx">{{item.username}}</view>
+                        <view class="text-gray" style="margin-top:-40rpx">
                             <text class="text-cut">
-                                Phone:{{item.phone}},学院:{{item.acade}}
+                                学院:{{item.acade}},Email:{{item.email}}
                             </text>
                         </view>
                     </view>
-                    <view class="action">
+                    <!-- <view class="action">
                         <view class="text-grey text-xs">{{item.username}}</view>
-                    </view>
+                    </view> -->
                 </view>
             </block>
-
+            <view >
+              <button class="cu-btn bg-cyan margin-tb-sm lg btns" bindtap='last'>上一页</button>
+              <text class="idx">{{pageIndex+1}}/{{len}}</text>
+              <button class="cu-btn bg-red margin-tb-sm lg btnr" bindtap='next'>下一页</button>
+            </view>
         </view>
     </block>
     <view class="padding text-center solid: 2rpx " wx:else>

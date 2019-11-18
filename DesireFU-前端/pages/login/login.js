@@ -1,5 +1,6 @@
 //// pages/login/login.js
 const app = getApp();
+const ip=app.ip
 Page({
 
     /**
@@ -123,7 +124,7 @@ Page({
             pass,
         })
         wx.request({
-            url: 'https://gatesma.cn:3000/signin',
+            url: ip+'/signin',
             method: 'POST',
             data: {
                 username: e.detail.value.username,
@@ -144,7 +145,7 @@ Page({
                     app.globalData.user = res.data;
                     if (app.globalData.userInfo) {
                         // console.log('userInfo:' + userInfo)
-                        app.globalData.user.avatar = app.globalData.userInfo.avatarUrl
+                        // app.globalData.user.avatar = app.globalData.userInfo.avatarUrl
                     } else {
                         console.log('userInfo为空')
                     }

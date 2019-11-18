@@ -24,7 +24,7 @@ router.post('/:userId/edit', function(req, res, next) {
     const acade = req.body.acade //学院
     const phone = req.body.phone //电话
     const email = req.body.email //邮箱
-
+    const profile = req.body.profile
     const requireType = req.body.requireType // 用户类型
     const isRequired = req.body.isRequired //是否愿意被招募
     //明文密码加密
@@ -36,7 +36,7 @@ router.post('/:userId/edit', function(req, res, next) {
         realname: realname,
         stuid: stuid,
         acade: acade,
-        
+        profile: profile,
         phone: phone,
         email: email,
         requireType: requireType,

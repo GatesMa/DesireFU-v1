@@ -1,5 +1,6 @@
 // pages/edit/edit.js
 const app = getApp()
+const ip=app.ip
 Page({
 
     /**
@@ -201,7 +202,7 @@ Page({
             console.log('发起注册网络请求')
 
             wx.request({
-                url: 'https://gatesma.cn:3000/user/' + this.data.user._id +'/edit', // 仅为示例，并非真实的接口地址
+                url: ip+'/user/' + this.data.user._id +'/edit', // 仅为示例，并非真实的接口地址
                 method: 'POST',
                 data: {
                     

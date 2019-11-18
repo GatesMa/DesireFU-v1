@@ -70,10 +70,7 @@ router.get('/:infoId', function (req, res, next) {
     ])
         .then(function (result) {
             const info = result[0]
-            info.type = 0
-            if (!info) {
-                info.type = 1
-            }
+            
             res.send(info)
         
         

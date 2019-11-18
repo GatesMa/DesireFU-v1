@@ -50,5 +50,7 @@ App({
         phone: '',
         email: ''
     }
-  }
+  },
+  // ip:"https://localhost:3000"
+  ip:"https://gatesma.cn:3000"
 })

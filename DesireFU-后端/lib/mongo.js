@@ -18,7 +18,8 @@ exports.User = mongolass.model('User', {
     email: {type: 'string', required: true},//邮箱
     profile: {type: 'string', required: true},
     requireType: {type: 'number', required: true}, //用户类型
-    isRequired: {type: 'string', required: true} //是否愿意被招募
+    isRequired: {type: 'string', required: true}, //是否愿意被招募
+    isAdmin: {type: 'string', required: false, default: 'false'}//是不是管理员
 })
 
 exports.User.index({ username: 1 }, { unique: true }).exec()// 根据用户名找到用户，用户名全局唯一

@@ -23,6 +23,7 @@ Page({
         that.setData({
             user: app.globalData.user
         })
+        console.log(app.globalData.user)
     },
     onShow: function() {
         var that = this

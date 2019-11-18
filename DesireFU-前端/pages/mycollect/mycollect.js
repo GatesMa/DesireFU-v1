@@ -1,5 +1,6 @@
 // pages/mycollect/mycollect.js
 const app = getApp()
+const ip=app.ip
 Page({
 
     /**
@@ -20,7 +21,7 @@ Page({
         })
 
         wx.request({
-            url: 'https://gatesma.cn:3000/info/mycollect', // 仅为示例，并非真实的接口地址
+            url: ip+'/info/mycollect', // 仅为示例，并非真实的接口地址
             method: 'POST',
             data: {
                 userId: this.data.user._id

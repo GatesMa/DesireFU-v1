@@ -1,5 +1,6 @@
 // pages/createInfo/createInfo.js
 const app = getApp()
+const ip=app.ip
 Page({
 
     /**
@@ -130,7 +131,7 @@ Page({
             //数据正确，发起网络请求
             console.log('发起注册网络请求')
             wx.request({
-                url: 'https://gatesma.cn:3000/Info/create', // 仅为示例，并非真实的接口地址
+                url: ip+'/Info/create', // 仅为示例，并非真实的接口地址
                 method: 'POST',
                 data: {
                     title: e.detail.value.title,
