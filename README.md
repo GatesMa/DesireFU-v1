@@ -7,3 +7,4 @@
 微信小程序搜索：DesireFU，参与体验，欢迎提出改进：QQ1353934265
 
 
+<img src = "https://github.com/GatesMa/DesireFU/blob/master/img/1.jpg?raw=true" width="400px"/>
