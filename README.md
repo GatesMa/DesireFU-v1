@@ -6,11 +6,18 @@
 
 微信小程序搜索：DesireFU，参与体验，欢迎提出改进：QQ1353934265
 
+- 登陆页面
 
 <img src = "https://github.com/GatesMa/DesireFU/blob/master/img/1.jpg?raw=true" width="400px"/>
 
+- 首页
+
 <img src = "https://github.com/GatesMa/DesireFU/blob/master/img/2.jpg?raw=true" width="400px"/>
 
+- 项目详情
+
 <img src = "https://github.com/GatesMa/DesireFU/blob/master/img/3.jpg?raw=true" width="400px"/>
+
+- 个人中心
 
 <img src = "https://github.com/GatesMa/DesireFU/blob/master/img/4.jpg?raw=true" width="400px"/>
